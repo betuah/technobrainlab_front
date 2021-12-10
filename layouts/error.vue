@@ -1,14 +1,18 @@
 <template>
-  <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
+  <v-app dark fill-height>
+    <div class="d-flex flex-column align-center my-auto">
+      <h1 v-if="error.statusCode === 404" class="text-h1 grey--text text--darken-1 font-weight-thin">
+        {{ pageNotFound }}
+      </h1>
+      <h1 v-else class="text-h1 grey--text text--darken-1 font-weight-thin">
+        {{ otherError }}
+      </h1>
+      <v-btn class="white--text mt-4" color="grey lighten-1" @click="goBack()">
+        <v-icon left>arrow_back</v-icon>
+        Go Back
+      </v-btn>
+    </div>
+    
   </v-app>
 </template>
 
@@ -24,7 +28,7 @@ export default {
   data () {
     return {
       pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
+      otherError: 'An Error Occurred'
     }
   },
   head () {
@@ -32,6 +36,11 @@ export default {
       this.error.statusCode === 404 ? this.pageNotFound : this.otherError
     return {
       title
+    }
+  },
+  methods: {
+    goBack() {
+      this.$router.push('/')
     }
   }
 }

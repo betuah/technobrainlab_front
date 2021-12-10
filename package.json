@@ -1,5 +1,5 @@
 {
-  "name": "technobrainlab",
+  "name": "techno_brain_front",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,9 +14,16 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/firebase": "^8.1.1",
     "core-js": "^3.15.1",
+    "firebase": "^9.6.0",
     "nuxt": "^2.15.7",
-    "vuetify": "^2.5.5"
+    "vue-uuid": "^2.0.2",
+    "vuetify": "^2.5.5",
+    "less": "^4.1.1",
+    "less-loader": "^2.0.0",
+    "sass": "1.32.8",
+    "sass-loader": "10.1.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
