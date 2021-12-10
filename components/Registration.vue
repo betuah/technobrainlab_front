@@ -171,19 +171,23 @@
                 color="secondary"
             ></v-progress-linear>
             <div class="d-flex flex-column pa-5 mx-auto">
-                <div class="d-flex flex-column">
+                <div class="d-flex flex-column mb-5">
                     <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1">Daftar Sekarang</span>
-                    <span class="text-center text-subtitle-2 font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span> 
+                    <span class="text-center text-caption font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span> 
                     <div class="d-flex flex-row mt-5 justify-center align-center grey--text">
                         <v-icon small color="cyan">info</v-icon>
                         <span class="ml-1 text-subtitle-2 font-weight-light align-self-center">Pendaftaran di tutup tgl</span>
                         <span class="ml-1 text-subtitle-2 secondary--text font-weight-bold">18 Des 2021</span>
                     </div>
                 </div>
-                <v-divider class="my-3 mb-5"></v-divider>
+
+
+                <span class="font-weight-bold primary--text text-overline">Personal Data</span>
+                <v-divider class="mb-3 mb-5"></v-divider>
                 <v-form 
                     ref="form"
                     v-model="valid"
+                    class="d-flex flex-column"
                     lazy-validation
                     @submit.prevent="submitForm"
                 >
@@ -233,8 +237,8 @@
                             color="primary"
                             prepend-inner-icon="phone"
                             :rules="no_tlpnRules"
-                            label="No. Telephone"
-                            hint="Contoh : +62 813 1122 3344"
+                            label="No. Whatsapp"
+                            hint="Nomor whatsapp aktif Contoh: +62 812 1122 3344"
                             required
                             outlined
                         ></v-text-field>
@@ -243,31 +247,86 @@
                             name="status"
                             dense
                             outlined
-                            class="mb-6"
                             color="primary lighten-1"
                             item-text="status"
                             item-value="status"
                             :items="statusData"
                             :rules="statusRules"
-                            label="Status Kamu saat ini"
-                            hide-details
+                            label="Status kamu saat ini"
                             prepend-inner-icon="school"
                             required
                         ></v-select>
                     </div>
-                    <v-divider class="mb-5"></v-divider>
-                    <div class="mb-5">
-                        <v-card elevation="2" class="pa-0 d-flex flex-column rounded-lg">
-                            <div class="d-flex flex-column pa-4 bg-bank-img">
-                                <span class="font-weight-bold brown--text">MANDIRI (008)</span>
-                                <span class="text-h6 primary--text font-weight-black my-3">1 6 4 . 0 0 0 2 3 6 7 . 3 4 2</span>
+
+                    <div class="mb-6 mt-3">
+                        <span class="font-weight-bold primary--text text-overline">Prasyarat</span>
+                        <v-divider class=" "></v-divider>
+                        <span class="text-caption font-weight-light ">Pastikan kamu sudah memenuhi beberapa syarat dalam mengikuti training ini :</span>
+                        <div>
+                            <v-checkbox
+                                v-model="checkbox1"
+                                class="text-caption"
+                                label="Akun AWS Pro"
+                                :color="checkbox1 ? 'green' : 'primary'"
+                                :rules="validateCheckbox"
+                                dense
+                                hide-details
+                            >
+                                <template v-slot:label>
+                                    <div class="text-caption">
+                                        <span class="font-weight-regular">Memiliki</span>
+                                        <span class="secondary--text font-weight-bold">Akun AWS Pro</span>
+                                    </div>
+                                </template>
+                            </v-checkbox>
+                            <v-checkbox
+                                v-model="checkbox2"
+                                class="text-caption"
+                                :color="checkbox2 ? 'green' : 'primary'"
+                                :rules="validateCheckbox"
+                                dense
+                                hide-details
+                            >
+                                <template v-slot:label>
+                                    <div class="text-caption">
+                                        <span class="font-weight-regular">Memiliki</span>
+                                        <span class="secondary--text font-weight-bold">Laptop/PC</span>
+                                    </div>
+                                </template>
+                            </v-checkbox>
+                            <v-checkbox
+                                v-model="checkbox3"
+                                class="text-caption"
+                                :color="checkbox3 ? 'green' : 'primary'"
+                                :rules="validateCheckbox"
+                                dense
+                                hide-details
+                            >
+                                <template v-slot:label>
+                                    <div class="text-caption">
+                                        <span class="font-weight-regular">Memiliki</span>
+                                        <span class="secondary--text font-weight-bold">Internet Connections</span>
+                                    </div>
+                                </template>
+                            </v-checkbox>
+                        </div>
+                    </div>
+                    
+                    <span class="font-weight-bold primary--text text-overline">Investasi</span>
+                    <v-divider></v-divider>
+                    <span class="mb-3 mt-2 text-caption font-weight-light">Kamu dapat berinvestasi melalui :</span>
+                    <div class="mb-5 d-flex">
+                        <v-card elevation="2" class="col-md-10 pa-0 mx-md-auto d-flex flex-column rounded-lg">
+                            <div class="d-flex flex-column px-4 py-2 bg-bank-img">
+                                <span class="font-weight-bold text-body-2 text-md-subtitle-1 brown--text">MANDIRI (008)</span>
+                                <span class="text-body-1 text-md-h6 primary--text font-weight-black my-3 my-md-2">1 6 4 . 0 0 0 2 3 6 7 . 3 4 2</span>
                                 <div>
                                     <v-divider class="divider-dash mb-2 mt-1"></v-divider>
                                 </div>
-                                <span class="text-subtitle-2 text-uppercase font-weight-bold secondary--text">Koperasi Inovasi Bersama SEAMOLEC</span>
+                                <span class="text-body-2 text-md-subtitle-1 text-uppercase font-weight-bold secondary--text">Koperasi Inovasi Bersama SEAMOLEC</span>
                             </div>
-                            <div class="d-flex flex-row pa-4 brown--text" style="border-top: 3px solid #6488D7">
-                                <span class="text-h6 text-uppercase font-weight-light">Jumlah</span>
+                            <div class="d-flex flex-row px-4 py-2 brown--text" style="border-top: 3px solid #6488D7">
+                                <span class="my-auto text-uppercase font-weight-light">Jumlah</span>
                                 <v-spacer></v-spacer>
                                 <span class="text-h6 font-weight-black">Rp. 250.000</span>
                             </div>
@@ -289,7 +348,8 @@
                             @change="onPicsUpload"
                         ></v-file-input>
                     </div>
-                    <v-divider class="mb-5 mt-1"></v-divider>
+
+                    <v-divider class="mb-5"></v-divider>
                     <div class="mb-5">
                         <v-btn
                             :loading="loading"
@@ -365,6 +425,12 @@ export default {
             icon: '',
             message: ''
         },
+        checkbox1: false,
+        validateCheckbox: [
+            v => !!v || 'Nama depan wajib di isi',
+        ],
+        checkbox2: false,
+        checkbox3: false,
         firstName: '',
         firstNameRules: [
             v => !!v || 'Nama depan wajib di isi',
@@ -380,7 +446,7 @@ export default {
         ],
         no_tlpn: '',
         no_tlpnRules: [
-            v => !!v || 'Status wajib di isi',
+            v => !!v || 'No. whatsapp wajib di isi',
         ],
         status: '',
         statusRules: [
@@ -393,9 +459,9 @@ export default {
         ]
     }),
     computed: {
-        passwordConfirmationRule() {
-            return (this.password === this.confirmPassword) || 'Password harus sama'
-        }
+        // validateCheckbox () {
+        //     return [this.selectedValues.length > 0 || "Persyaratan ini wajib kamu penuhi."]
+        // }
     },
     created() {
         this.readFromRealtimeDb()

@@ -4,8 +4,8 @@
             <div class="text-uppercase d-flex flex-column indigo lighten-2 pa-0">
                 <div class="d-flex flex-column-reverse flex-md-row flex-md-row px-5 py-4">
                     <div class="d-flex flex-row mx-md-0 mt-5 mt-md-0 justify-center align-center">
-                        <span class="font-weight-light text-h5 light-blue--text text--lighten-5">Payment</span>
-                        <span class="font-weight-bold text-h5 light-blue--text text--lighten-5">Verification</span>
+                        <span class="font-weight-light text-h5 light-blue--text text--lighten-5 mr-1">Verifikasi</span>
+                        <span class="font-weight-bold text-h5 light-blue--text text--lighten-5">Peserta</span>
                     </div>
                     <v-spacer></v-spacer>
                     <div class="d-flex flex-row-reverse flex-md-row mb-3 ma-md-0 justify-space-between align-center">
@@ -18,14 +18,14 @@
                             <v-icon left>
                                 arrow_back
                             </v-icon>
-                            Back
+                            KEMBALI
                         </v-btn>
                     </div>
                 </div>
                 <div class="col-12 px-5 pt-0 indigo lighten-3">
                     <v-text-field
                     v-model="search"
-                    label="Search"
+                    label="Cari"
                     append-icon="search"
                     dark
                     hide-details
@@ -37,7 +37,9 @@
                 :items="desserts"
                 :search="search"
                 :loading="loading"
-                loading-text="Data sedang di request. Mohon Tunggu"
+                loading-text="Mengambil data... Mohon Tunggu!"
+                no-data-text="Data tidak tersedia."
+                no-results-text="Data tidak ditemukan."
                 class="grey--text"
             >
                 <template v-slot:[`item.code`]="{ item }">
@@ -50,7 +52,13 @@
                     </v-chip>
                 </template>
                 <template v-slot:[`item.fullName`]="{ item }">
-                    <span class="primary--text font-weight-medium text-capitalize">{{item.fullName}}</span>
+                    <span class="primary--text font-weight-medium text-body-2 text-capitalize">{{item.fullName}}</span>
+                </template>
+                <template v-slot:[`item.email`]="{ item }">
+                    <span class="font-weight-light text-caption">{{item.email}}</span>
+                </template>
+                <template v-slot:[`item.status`]="{ item }">
+                    <span class="font-weight-light text-caption">{{item.status}}</span>
                 </template>
             </v-data-table>
         </v-card>
@@ -64,14 +72,14 @@
         loading: false,
         headers: [
             {
-                text: 'Full Name',
+                text: 'Nama Lengkap',
                 align: 'start',
                 value: 'fullName',
                 class: "secondary--text font-weight-bold"
             },
             { text: 'E-Mail', value: 'email', class: "" },
-            { text: 'Status', value: 'status', class: "" },
-            { text: 'Payment Status', value: 'code', class: "success--text font-weight-bold" }
+            { text: 'Pekerjaan', value: 'status', class: "" },
+            { text: 'Status', value: 'code', class: "success--text font-weight-bold" }
         ],
         desserts: [],
         editedIndex: -1,
