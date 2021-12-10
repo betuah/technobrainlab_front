@@ -48,14 +48,14 @@ export default {
       '@nuxtjs/firebase',
       {
         config: {
-          apiKey: "AIzaSyBjMer6rSbGydI8rWUOg1qgJrm42hQ6ke4",
-          authDomain: "technobrain-8b329.firebaseapp.com",
-          databaseURL: "https://technobrain-8b329-default-rtdb.asia-southeast1.firebasedatabase.app",
-          projectId: "technobrain-8b329",
-          storageBucket: "technobrain-8b329.appspot.com",
-          messagingSenderId: "881361801573",
-          appId: "1:881361801573:web:e81cea2716aa6c2c79518c",
-          measurementId: "${config.measurementId}"
+          apiKey: process.env.FIREBASE_APIKEY,
+          authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+          databaseURL: process.env.FIREBASE_DATABASE_URL,
+          projectId: process.env.FIREBASE_PROJECT_ID,
+          storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+          appId: process.env.FIREBASE_APP_ID,
+          measurementId: process.env.FIREBASE_MEASUREMENT_ID
         },
         services: {
           auth: {
