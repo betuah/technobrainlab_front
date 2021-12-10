@@ -1,5 +1,5 @@
 {
-  "name": "techno_brain_front",
+  "name": "technobrainlab",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,11 +14,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/firebase": "^8.1.1",
     "core-js": "^3.15.1",
-    "firebase": "^9.6.0",
     "nuxt": "^2.15.7",
-    "vue-uuid": "^2.0.2",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
