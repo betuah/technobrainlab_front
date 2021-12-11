@@ -94,31 +94,42 @@
                         </div>
                         <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text mx-2">
                             <div class="d-flex flex-row mb-1">
-                                <v-icon small color="brown lighten-1">book</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-medium">6</span>
-                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Modul</span>
+                                <v-icon small color="brown lighten-1">verified</v-icon>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">Sertifikat</span>
+                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">(CoC)</span>
                             </div>
                             <div class="d-flex flex-row">
                                 <v-icon small color="brown lighten-1">school</v-icon>
                                 <span class="ml-1 text-subtitle-2 font-weight-medium">Workshop</span>
                             </div>
                         </div>
-                        <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text mx-2">
+                        <div class="col-5 pa-0 d-flex flex-row flex-wrap flex-grow-1 flex-wrap secondary--text mx-2">
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">schedule</v-icon>
                                 <span class="ml-1 text-subtitle-2 font-weight-medium">5</span>
                                 <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Hari</span>
                             </div>
-                            <div class="d-flex flex-row mb-1">
-                                <v-icon small color="brown lighten-1">verified</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-medium">Sertifikat</span>
-                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">(CoC)</span>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text ml-2">
+                            <v-spacer></v-spacer>
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">calendar_month</v-icon>
                                 <span class="ml-1 text-subtitle-2 font-weight-medium">20 Des 2021</span>
+                            </div>
+                            <div class="d-flex flex-row mb-1 align-center">
+                                <v-icon small color="brown lighten-1">book</v-icon>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">6</span>
+                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Modul</span>
+                                <v-btn 
+                                    relative
+                                    text 
+                                    color="blue" 
+                                    plain 
+                                    x-small 
+                                    class="pa-0 ml-1" 
+                                    href="https://www.dropbox.com/s/flotd7d3e7vp2da/aws-silabus-2021.pdf" 
+                                    target="_blank"
+                                >
+                                    (download silabus)
+                                </v-btn>
                             </div>
                         </div>
                     </div>
@@ -142,16 +153,29 @@
                                 <span class="ml-1 text-subtitle-2 font-weight-medium">20 Des 2021</span>
                             </div>
                         </div>
+                        <v-spacer></v-spacer>
                         <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text">
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small>schedule</v-icon>
                                 <span class="ml-1 text-subtitle-2 font-weight-bold">5</span>
                                 <span class="ml-1 text-subtitle-2 grey--text font-weight-regular">Hari</span>
                             </div>
-                            <div class="d-flex flex-row mb-1">
-                                <v-icon small>book</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-bold">6</span>
-                                <span class="ml-1 text-subtitle-2 grey--text font-weight-regular">Modul</span>
+                            <div class="d-flex flex-row mb-1 align-center">
+                                <v-icon small color="brown lighten-1">book</v-icon>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">6</span>
+                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Modul</span>
+                                <v-btn 
+                                    relative
+                                    text 
+                                    color="blue" 
+                                    plain 
+                                    x-small 
+                                    class="pa-0 ml-1" 
+                                    href="https://www.dropbox.com/s/flotd7d3e7vp2da/aws-silabus-2021.pdf" 
+                                    target="_blank"
+                                >
+                                    (download silabus)
+                                </v-btn>
                             </div>
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small>verified</v-icon>
@@ -272,7 +296,7 @@
                             item-value="status"
                             :items="statusData"
                             :rules="statusRules"
-                            label="Status kamu saat ini"
+                            label="Pekerjaan kamu saat ini"
                             prepend-inner-icon="school"
                             required
                         ></v-select>
@@ -286,7 +310,6 @@
                             <v-checkbox
                                 v-model="checkbox1"
                                 class="text-caption"
-                                label="Akun AWS Pro"
                                 :color="checkbox1 ? 'green' : 'primary'"
                                 :rules="validateCheckbox"
                                 dense
@@ -294,13 +317,28 @@
                             >
                                 <template v-slot:label>
                                     <div class="text-caption">
-                                        <span class="font-weight-regular">Memiliki</span>
-                                        <span class="secondary--text font-weight-bold">Akun AWS Pro</span>
+                                        <span class="font-weight-regular">Memahami dasar</span>
+                                        <span class="secondary--text font-weight-bold ">Jaringan Komputer</span>
                                     </div>
                                 </template>
                             </v-checkbox>
                             <v-checkbox
                                 v-model="checkbox2"
+                                class="text-caption"
+                                :color="checkbox1 ? 'green' : 'primary'"
+                                :rules="validateCheckbox"
+                                dense
+                                hide-details
+                            >
+                                <template v-slot:label>
+                                    <div class="text-caption">
+                                        <span class="font-weight-regular">Memahami dasar</span>
+                                        <span class="secondary--text font-weight-bold ">Administrasi Server</span>
+                                    </div>
+                                </template>
+                            </v-checkbox>
+                            <v-checkbox
+                                v-model="checkbox3"
                                 class="text-caption"
                                 :color="checkbox2 ? 'green' : 'primary'"
                                 :rules="validateCheckbox"
@@ -315,7 +353,7 @@
                                 </template>
                             </v-checkbox>
                             <v-checkbox
-                                v-model="checkbox3"
+                                v-model="checkbox4"
                                 class="text-caption"
                                 :color="checkbox3 ? 'green' : 'primary'"
                                 :rules="validateCheckbox"
@@ -325,7 +363,7 @@
                                 <template v-slot:label>
                                     <div class="text-caption">
                                         <span class="font-weight-regular">Memiliki</span>
-                                        <span class="secondary--text font-weight-bold">Internet Connections</span>
+                                        <span class="secondary--text font-weight-bold">Koneksi Internet</span>
                                     </div>
                                 </template>
                             </v-checkbox>
@@ -386,15 +424,20 @@
                 <div class="d-flex flex-row justify-center mb-4">
                     <v-btn outlined small color='white' @click="goVerivied()">CEK VERIFIKASI DATA</v-btn>
                 </div>
-                <div class="d-flex flex-column-reverse flex-md-row-reverse text-caption justify-center align-center white--text">
+                <div class="mx-auto mb-2">
+                    <span class="white--text text-caption">WA :&nbsp;</span>
+                    <span class="white--text text-caption font-weight-bold">+62 812 9065 4582</span>
+                </div>
+                <div class="d-flex flex-column-reverse flex-md-row-reverse text-caption justify-center align-center white--text font-weight-light">
                     <div class="d-flex flex-row">
+                        <v-divider vertical class="d-none d-md-flex white mr-1"></v-divider>
                         <span>Copyright @ &nbsp;</span>
                         <span>2021</span>
                     </div>
                     <div class="d-flex flex-row mb-2 mb-md-0">
                         <span>Technobrain Sistema &nbsp;</span>
-                        <v-divider vertical class="white"></v-divider>
-                        <span>&nbsp; Training Solution &nbsp;</span>
+                        <v-divider vertical class="white mr-1"></v-divider>
+                        <span>Training Solution &nbsp;</span>
                     </div>
                     
                 </div>
@@ -446,11 +489,13 @@ export default {
             message: ''
         },
         checkbox1: false,
+        checkbox2: false,
+        checkbox3: false,
+        checkbox5: false,
+        checkbox4: false,
         validateCheckbox: [
             v => !!v || 'Nama depan wajib di isi',
         ],
-        checkbox2: false,
-        checkbox3: false,
         firstName: '',
         firstNameRules: [
             v => !!v || 'Nama depan wajib di isi',
@@ -632,6 +677,10 @@ export default {
         background-size: cover;
         position: relative;
         width: 100%;
+    }
+
+    .absolute-div {
+        position: absolute;
     }
 
 
