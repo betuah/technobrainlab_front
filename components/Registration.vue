@@ -170,17 +170,37 @@
                 top
                 color="secondary"
             ></v-progress-linear>
-            <div class="d-flex flex-column pa-5 mx-auto">
+            
+            <div class="d-flex flex-column px-5 pt-5 mx-auto">
                 <div class="d-flex flex-column mb-5">
                     <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1">Daftar Sekarang</span>
                     <span class="text-center text-caption font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span> 
-                    <div class="d-flex flex-row mt-5 justify-center align-center grey--text">
+                    <div class="d-flex flex-row justify-center align-center col-4 mx-auto">
+                        <div class="mx-2">
+                            <v-img
+                                src="https://ucd9be752329eed7f9f6fa0cd04d.previews.dropboxusercontent.com/p/thumb/ABbt7QQOZUfsbZiEJRpBV6_EyCe1Zyr00TmPm4R8g2oITCQu7EOIIGl0iTvm5j3svaLdLbo_FKH3H0WdrNpDW6kH299p1bkY8_9NwFo1z0h-Qfs62j268y3Pe0L4EHq7kbLGfs-KjyZBXv2UyDrXKWIB7vFNBbvQcLKq8I1VuSAd7ALQD_LsB0eUd535ZdFbH7HcUulkQiekbS_dGye33_RRuoQn3D-xm14isZVgfvd6j20fZ9XG-8ThGYw_jW3FoH9UUOrI9UlehQMGCEzGnBG6G6DSEw6CLc6Qty9tqSaVpf086OEkNj7N1_HeZiJm4ar-MS0ehmoTeQ0nVQBoy5mwED_E4qCTuP0Rf2yiQxO-kC1bJNsCzCvBGyJ671kL4Pg/p.png"
+                                
+                                width="80"
+                                contain
+                            >
+                        </v-img>
+                        </div>
+                        <div class="mx-2">
+                            <v-img
+                                src='https://uc9cc6c9ba9c75b51f4256631be2.previews.dropboxusercontent.com/p/thumb/ABZCPbh2EFCbPnTAEF5Tf_ow_0Db4YXg4nfT1PGaTI6WhbjpENxaNMUSREeoSLPXhpGHUjxTfh9VIBFQY66LglWykRXlOIn0R-d6FJICxx8OfDKu_7tnagGstSqw1vAmBAXBYDPQ_8ZuZez8exDZtGELtwUWwjKTtn4PPDTrE8JB88gPRmHHi8bOIQyx8vt3ICJQOrEcMzvXxVKjXddqnBaAZ4vEJ2CLBsd8Ij9UHVU6JO3kph8rCoJWJA4VLtQXYympQiGxhxbj14UFWjiyLSiAnhOJluApktndDO9KUvLB6uwPzkVKj9ICKBgJK6j_jU1JmiyOApg62qpxCGL_tPLsJL_whrRGUOpAIXWD36ihICBjbal0K6D5Z-XhgBQnqY8/p.png'
+                                height="50"
+                                width="50"
+                                contain
+                            >
+                            </v-img>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-center align-center grey--text">
                         <v-icon small color="cyan">info</v-icon>
                         <span class="ml-1 text-subtitle-2 font-weight-light align-self-center">Pendaftaran di tutup tgl</span>
                         <span class="ml-1 text-subtitle-2 secondary--text font-weight-bold">18 Des 2021</span>
                     </div>
                 </div>
-
 
                 <span class="font-weight-bold primary--text text-overline">Personal Data</span>
                 <v-divider class="mb-3 mb-5"></v-divider>
@@ -339,11 +359,11 @@
                             color="cyan lighten-1"
                             :rules="paymentPicsRules"
                             accept="image/png, image/jpeg"
-                            placeholder="Unggah Bukti Pembayaran"
+                            placeholder="Unggah Bukti Transfer"
                             prepend-icon=""
                             prepend-inner-icon="photo_camera"
                             show-size
-                            label="Unggah Bukti Pembayaran"
+                            label="Unggah Bukti Transfer"
                             required
                             @change="onPicsUpload"
                         ></v-file-input>
