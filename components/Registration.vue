@@ -199,11 +199,10 @@
                 <div class="d-flex flex-column mb-5">
                     <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1">Daftar Sekarang</span>
                     <span class="text-center text-caption font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span> 
-                    <div class="d-flex flex-row justify-center align-center col-4 mx-auto">
+                    <div class="d-flex flex-row justify-center align-center col-4 my-2 mx-auto">
                         <div class="mx-2">
                             <v-img
-                                src="https://ucd9be752329eed7f9f6fa0cd04d.previews.dropboxusercontent.com/p/thumb/ABbt7QQOZUfsbZiEJRpBV6_EyCe1Zyr00TmPm4R8g2oITCQu7EOIIGl0iTvm5j3svaLdLbo_FKH3H0WdrNpDW6kH299p1bkY8_9NwFo1z0h-Qfs62j268y3Pe0L4EHq7kbLGfs-KjyZBXv2UyDrXKWIB7vFNBbvQcLKq8I1VuSAd7ALQD_LsB0eUd535ZdFbH7HcUulkQiekbS_dGye33_RRuoQn3D-xm14isZVgfvd6j20fZ9XG-8ThGYw_jW3FoH9UUOrI9UlehQMGCEzGnBG6G6DSEw6CLc6Qty9tqSaVpf086OEkNj7N1_HeZiJm4ar-MS0ehmoTeQ0nVQBoy5mwED_E4qCTuP0Rf2yiQxO-kC1bJNsCzCvBGyJ671kL4Pg/p.png"
-                                
+                                src="/technobrain-logo.png"
                                 width="80"
                                 contain
                             >
@@ -211,8 +210,7 @@
                         </div>
                         <div class="mx-2">
                             <v-img
-                                src='https://uc9cc6c9ba9c75b51f4256631be2.previews.dropboxusercontent.com/p/thumb/ABZCPbh2EFCbPnTAEF5Tf_ow_0Db4YXg4nfT1PGaTI6WhbjpENxaNMUSREeoSLPXhpGHUjxTfh9VIBFQY66LglWykRXlOIn0R-d6FJICxx8OfDKu_7tnagGstSqw1vAmBAXBYDPQ_8ZuZez8exDZtGELtwUWwjKTtn4PPDTrE8JB88gPRmHHi8bOIQyx8vt3ICJQOrEcMzvXxVKjXddqnBaAZ4vEJ2CLBsd8Ij9UHVU6JO3kph8rCoJWJA4VLtQXYympQiGxhxbj14UFWjiyLSiAnhOJluApktndDO9KUvLB6uwPzkVKj9ICKBgJK6j_jU1JmiyOApg62qpxCGL_tPLsJL_whrRGUOpAIXWD36ihICBjbal0K6D5Z-XhgBQnqY8/p.png'
-                                height="50"
+                                src='/aws-logo.png'
                                 width="50"
                                 contain
                             >
@@ -432,7 +430,7 @@
                     <div class="d-flex flex-row">
                         <v-divider vertical class="d-none d-md-flex white mr-1"></v-divider>
                         <span>Copyright @ &nbsp;</span>
-                        <span>2021</span>
+                        <span>{{new Date().getFullYear()}}</span>
                     </div>
                     <div class="d-flex flex-row mb-2 mb-md-0">
                         <span>Technobrain Sistema &nbsp;</span>
@@ -646,7 +644,7 @@ export default {
     }
 
     .bg-header-img {
-        background-image: url('https://image.freepik.com/free-vector/flat-design-abstract-background_23-2149116123.jpg');
+        background-image: url('/bg-img.jpg');
         background-position: center;
         background-repeat: repeat;
         background-size: cover;
@@ -662,7 +660,7 @@ export default {
     }
 
     .bg-bank-img {
-        background-image: url('https://image.freepik.com/free-vector/flat-design-abstract-background_23-2149116123.jpg');
+        background-image: url('/bg-img.jpg');
         background-position: center;
         background-repeat: repeat;
         background-size: cover;
@@ -671,7 +669,7 @@ export default {
     }
 
     .bg-footer-img {
-        background-image: url('https://ucb1a17d1aa188bb1d6af3dae079.previews.dropboxusercontent.com/p/thumb/ABazrBeGdC7p6vJl_uq60n7o-v4BmuTJ9XnnNK9E_8DZU4k7-Wy-qZneun1KGY8McfR3kTM3JQgwLbXQsPy0Ltd2IIUk22Zm1d3c8yL-eHRFyzRu6UfT-GrP75oTS7QqwptNeEnjKIjRefkt-9J7bytuLOa2_kXDPu8qWLI1vgvsNxScy90VdGkJ3KVXUsjl0YnGgo30_HOmZFzfR2uqcf_1lhjcImdfYq2qLOvTbNmoqd3ogURkFv1AkivHppeLr4tkE8PUw9ChUMFPRP3PJwI93ky4qoQfRARZe4oH0IQuaEETG2XnuQtEdYiFMNfWlXCHvQt-uEAbpj3sj3hPvthwSYwEeV4WheibN3KLfZedXLJcbYmuFwoZiISle5y_rDs/p.png');
+        background-image: url('/footer-img.png');
         background-position: center;
         background-repeat: repeat;
         background-size: cover;
