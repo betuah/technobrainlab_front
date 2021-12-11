@@ -1,6 +1,6 @@
 <template>
     <v-container fill-height>
-        <v-card elevation="3" class="col-12 col-md-10 mx-auto pa-0 rounded-lg">
+        <v-card elevation="3" class="col-12 col-md-8 mx-auto pa-0 rounded-lg">
             <div class="text-uppercase d-flex flex-column indigo lighten-2 pa-0">
                 <div class="d-flex flex-column-reverse flex-md-row flex-md-row px-5 py-4">
                     <div class="d-flex flex-row mx-md-0 mt-5 mt-md-0 justify-center align-center">
@@ -52,14 +52,14 @@
                     </v-chip>
                 </template>
                 <template v-slot:[`item.fullName`]="{ item }">
-                    <span class="primary--text font-weight-medium text-body-2 text-capitalize">{{item.fullName}}</span>
+                    <span class="primary--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.fullName}}</span>
                 </template>
-                <template v-slot:[`item.email`]="{ item }">
+                <!-- <template v-slot:[`item.email`]="{ item }">
                     <span class="font-weight-light text-caption">{{item.email}}</span>
-                </template>
-                <template v-slot:[`item.status`]="{ item }">
+                </template> -->
+                <!-- <template v-slot:[`item.status`]="{ item }">
                     <span class="font-weight-light text-caption">{{item.status}}</span>
-                </template>
+                </template> -->
             </v-data-table>
         </v-card>
     </v-container>
@@ -77,8 +77,8 @@
                 value: 'fullName',
                 class: "secondary--text font-weight-bold"
             },
-            { text: 'E-Mail', value: 'email', class: "" },
-            { text: 'Pekerjaan', value: 'status', class: "" },
+            // { text: 'E-Mail', value: 'email', class: "" },
+            // { text: 'Pekerjaan', value: 'status', class: "" },
             { text: 'Status', value: 'code', class: "success--text font-weight-bold" }
         ],
         desserts: [],
