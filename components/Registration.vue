@@ -64,6 +64,16 @@
                             <span class="">Beginner</span>
                             
                         </v-chip>
+                        <v-chip
+                            class="white--text pa-3 font-weight-medium ml-1 align-self-center"
+                            close-icon="cancel"
+                            color="green lighten-1"
+                            small
+                        >
+                            <v-icon small class="mr-1">history_edu</v-icon>
+                            <span class="">Online</span>
+                            
+                        </v-chip>
                         <v-spacer></v-spacer>
                         <v-chip
                             class="white--text font-weight-bold text-subtitle-2 rounded-l-pill px-4 pl-5 py-4"
@@ -256,7 +266,7 @@
                                 prepend-inner-icon="assignment_ind"
                                 :rules="lastNameRules"
                                 label="Nama belakang"
-                                hint="Jika kamu tidak memiliki nama belakang isi dengan '.'"
+                                hint="Tidak ada nama belakang isi '.'"
                                 required
                                 outlined
                             ></v-text-field>
@@ -374,17 +384,17 @@
                     <div class="mb-5 d-flex">
                         <v-card elevation="2" class="col-md-10 pa-0 mx-md-auto d-flex flex-column rounded-lg">
                             <div class="d-flex flex-column px-4 py-2 bg-bank-img">
-                                <span class="font-weight-bold text-body-2 text-md-subtitle-1 brown--text">MANDIRI (008)</span>
+                                <span class="font-weight-bold text-body-2 text-md-subtitle-2 brown--text">MANDIRI (008)</span>
                                 <span class="text-body-1 text-md-h6 primary--text font-weight-black my-3 my-md-2">1 6 4 . 0 0 0 2 3 6 7 . 3 4 2</span>
                                 <div>
                                     <v-divider class="divider-dash mb-2 mt-1"></v-divider>
                                 </div>
-                                <span class="text-body-2 text-md-subtitle-1 text-uppercase font-weight-bold secondary--text">Koperasi Inovasi Bersama SEAMOLEC</span>
+                                <span class="text-body-2 text-md-subtitle-2 text-uppercase font-weight-bold secondary--text">Koperasi Inovasi Bersama SEAMOLEC</span>
                             </div>
-                            <div class="d-flex flex-row px-4 py-2 brown--text" style="border-top: 3px solid #6488D7">
+                            <div class="d-flex flex-row px-4 py-4 brown--text" style="border-top: 3px solid #6488D7">
                                 <span class="my-auto text-uppercase font-weight-light">Jumlah</span>
                                 <v-spacer></v-spacer>
-                                <span class="text-h6 font-weight-black">Rp. 250.000</span>
+                                <span class="font-weight-black">Rp. 250.000</span>
                             </div>
                         </v-card>
                     </div>
@@ -606,6 +616,7 @@ export default {
                     this.goVerivied()
                     this.showNotif('success', `Data berhasil di simpan. Terima Kasih`)
                 } catch (e) {
+                    console.log(e)
                     this.showNotif('error', `${e.massage}`)
                     this.loading = false
                 }
@@ -635,6 +646,20 @@ export default {
 </script>
 
 <style>
+    .v-text-field--outlined .v-label, .v-input__slot {
+        font-size: 14px;
+        
+        /* color: blueviolet; */
+    }
+
+    .v-text-field--outlined .v-icon {
+        font-size: 20px;
+    }
+
+    .v-application--is-ltr .v-text-field .v-input__prepend-inner {
+        padding-right: 7px;
+    }
+
     .title-backdrop {
         background: rgba(231, 231, 231, 0.5);
         height: 100%;
