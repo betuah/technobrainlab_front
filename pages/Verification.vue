@@ -48,7 +48,7 @@
                         class="pa-3 white--text text-caption text-capitalize"
                         :color="item.code === '1' ? 'warning lighten-1' : ( item.code === '2' ? 'green lighten-1' : 'red lighten-1')"
                     >
-                        {{ item.code === '1' ? 'Process' : ( item.code === '2' ? 'Verified' : 'Reject') }}
+                        {{ item.code === '1' ? 'Process' : ( item.code === '2' ? 'Accepted' : 'Reject') }}
                     </v-chip>
                 </template>
                 <template v-slot:[`item.fullName`]="{ item }">
