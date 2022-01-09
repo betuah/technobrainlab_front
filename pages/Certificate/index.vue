@@ -143,17 +143,17 @@
                 });
             },
             getCertificate(id) {
-                this.downloadLoading = true
+                this.loading = true
                 return this.$axios.get(`/api/certificate/${id}`, { responseType: "blob" })
                     .then(res => {
                         const blob = new Blob([res.data], {type: 'application/pdf'})
                         const objectUrl = URL.createObjectURL(blob)
-                        this.downloadLoading = false
+                        this.loading = false
                         window.open(objectUrl, '_blank')
                         URL.revokeObjectURL(objectUrl)
                     })
                     .catch(e => {
-                        this.downloadLoading = false
+                        this.loading = false
                         console.log(e)
                     })
             },
