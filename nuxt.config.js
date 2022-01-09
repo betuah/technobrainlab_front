@@ -66,7 +66,7 @@ export default {
             },
             ssr: false, // default
           },
-          firestore: false,
+          firestore: true,
           functions: false,
           storage: true,
           database: true,
@@ -85,8 +85,7 @@ export default {
   },
 
   proxy: {
-    '/api/': { target: `${process.env.API_URL}`, pathRewrite: {'^/api/': ''}, changeOrigin: true },
-    '/apiv2/': { target: `${process.env.API_EXAM_URL}`, pathRewrite: {'^/apiv2/': ''}, changeOrigin: true }
+    '/api/': { target: `${process.env.API_URL}`, pathRewrite: {'^/api/': '/api/v1/'}, changeOrigin: true },
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
