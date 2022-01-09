@@ -100,7 +100,6 @@
                 try {
                     const snapshot = await awsRef.once('value')
                     snapshot.forEach((element, index, array) => {
-                        console.log(element.key, index, array)
                         dataArr.push(element.val())
                         this.desserts = dataArr
                     });
