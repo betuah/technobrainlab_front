@@ -67,7 +67,7 @@
                         </template>
                         <template v-slot:[`item.certificate`]="{ item }">
                             <div class="d-flex flex-md-row mb-3 ma-md-0 justify-center align-center">
-                                <v-btn :loading="downloadLoading" icon class="primary--text mr-md-2" @click="getCertificate(item.id, item.email)">
+                                <v-btn icon class="primary--text mr-md-2" @click="getCertificate(item.id, item.email)">
                                     <v-icon>
                                         description
                                     </v-icon>
@@ -94,7 +94,7 @@
             pdfSrc: null,
             headers: [
                 { text: 'Document Number', value: 'no', class: "secondary--text font-weight-bold" },
-                { text: 'Full Name', align: 'center', value: 'fullName', class: "" },
+                { text: 'Full Name', align: 'start', value: 'fullName', class: "" },
                 { text: 'Course', value: 'courseType', class: "" },
                 { text: 'Course', value: 'course', class: "" },
                 { text: 'E-Mail', value: 'email', class: "" },
