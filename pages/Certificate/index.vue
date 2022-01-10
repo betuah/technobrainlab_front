@@ -95,7 +95,7 @@
             headers: [
                 { text: 'Document Number', value: 'no', class: "secondary--text font-weight-bold" },
                 { text: 'Full Name', align: 'start', value: 'fullName', class: "" },
-                { text: 'Course', value: 'courseType', class: "" },
+                { text: 'Course Type', value: 'courseType', class: "" },
                 { text: 'Course', value: 'course', class: "" },
                 { text: 'E-Mail', value: 'email', class: "" },
                 { text: 'Certificate', value: 'certificate', class: "secondary--text" }
@@ -150,7 +150,6 @@
                         const objectUrl = URL.createObjectURL(blob)
                         this.loading = false
                         window.open(objectUrl, '_blank')
-                        URL.revokeObjectURL(objectUrl)
                     })
                     .catch(e => {
                         this.loading = false
