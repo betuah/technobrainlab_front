@@ -1,6 +1,11 @@
 <template>
-    <div class="fill-height bgGrey">
-        <Registration />
+    <div class="fill-height yellowCream d-flex justify-center align-center">
+        <v-img
+            contain
+            max-width="860"
+            src="/maintenance.jpg"
+        ></v-img>
+        <!-- <Registration /> -->
         <!-- <Landing v-if="!isLoggedIn" />
         <Dashboard v-else /> -->
     </div>
