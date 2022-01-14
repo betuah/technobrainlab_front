@@ -443,7 +443,7 @@ export default {
                 this.$axios.post('/api/users', bodyData)
                     .then(resData => {
                         this.$axios.post('/api/course/enroll', {
-                            courseId: 'Uga9MrhI3g6U3BfVIDI4',
+                            courseId: 'Xl204LuMCZ8MmWdLioEN',
                             userId: resData.data.data.userId
                         }).then(resSecData => {
                             this.loading = false
