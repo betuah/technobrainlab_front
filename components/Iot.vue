@@ -261,6 +261,17 @@
                             required
                             outlined
                         ></v-text-field>
+                        <v-text-field
+                            v-model="institution"
+                            name="institution"
+                            dense
+                            color="primary"
+                            prepend-inner-icon="apartment"
+                            :rules="institutionRules"
+                            label="Instansi"
+                            required
+                            outlined
+                        ></v-text-field>
                         <v-select
                             v-model="status"
                             name="status"
@@ -373,6 +384,10 @@ export default {
         no_tlpnRules: [
             v => !!v || 'No. whatsapp wajib di isi',
         ],
+        institution: '',
+        institutionRules: [
+            v => !!v || 'Nama instansi wajib di isi',
+        ],
         status: '',
         statusRules: [
             v => !!v || 'Status wajib di isi',
@@ -436,7 +451,7 @@ export default {
                     phone: `${this.no_tlpn}`,
                     profilePics: null,
                     profession: `${this.status}`,
-                    institution: null,
+                    institution: `${this.institution}`,
                     address: null
                 }
 
@@ -448,11 +463,15 @@ export default {
                         }).then(resSecData => {
                             this.loading = false
                             this.showNotif('success', `Data berhasil di simpan. Terima Kasih`)
-                        }).catch(e => {throw e})
+                        }).catch(e => {
+                            console.log(e)
+                            this.showNotif('error', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
+                            this.loading = false
+                        })
                     })
                     .catch(e => {
                         console.log(e)
-                        this.showNotif('error', `${e.massage}`)
+                        this.showNotif('error', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
                         this.loading = false
                     })
             }
