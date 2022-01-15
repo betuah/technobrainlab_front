@@ -302,9 +302,6 @@
                 </v-form>
             </div>
             <div class="d-flex flex-column pa-5 primary bg-footer-img">
-                <div class="d-flex flex-row justify-center mb-4">
-                    <v-btn outlined small color='white' @click="goVerivied()">CEK DATA</v-btn>
-                </div>
                 <div class="mx-auto mb-2">
                     <span class="white--text text-caption">WA :&nbsp;</span>
                     <span class="white--text text-caption font-weight-bold">+62 812 9065 4582</span>
@@ -463,6 +460,7 @@ export default {
                         }).then(resSecData => {
                             this.loading = false
                             this.showNotif('success', `Data berhasil di simpan. Terima Kasih`)
+                            this.$router.push('/iot/success')
                         }).catch(e => {
                             console.log(e)
                             this.showNotif('error', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
