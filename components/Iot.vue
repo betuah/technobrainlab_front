@@ -376,6 +376,7 @@ export default {
     created() {
         const db        = this.$fire.firestore
         const courseRef = db.doc(`courses/${courseId}`)
+        console.log(courseId)
         const query     = db.collection('participant').where('course', '==', courseRef).where('paymentStats', '==', 2)
         query.onSnapshot(querySnapshot => {
             this.participant = querySnapshot.size
