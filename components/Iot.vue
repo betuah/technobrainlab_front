@@ -1,36 +1,5 @@
 <template>
     <v-container class="">
-        <v-snackbar
-            v-model="alert"
-            :timeout="3000"
-            :color="notif.color"
-            absolute
-            right
-            top
-            rounded="pill"
-        >
-            <div class="d-flex flex-row py-1 rounded-xl">
-                <v-icon>
-                    {{ notif.icon }}
-                </v-icon>
-                <div class="text-body-2 ml-4">
-                    {{ notif.message }}
-                </div>
-            </div>
-            
-            <template v-slot:action="{ attrs }">
-                <v-btn
-                    color="white"
-                    icon
-                    v-bind="attrs"
-                    @click="alert = false"
-                >
-                    <v-icon small>
-                        close
-                    </v-icon>
-                </v-btn>
-            </template>
-        </v-snackbar>
         <v-card class="col-md-6 my-8 mx-auto pa-0 d-flex flex-column rounded-lg">
             <div class="title-backdrop d-flex flex-column flex-grow-1 rounded-t-lg bg-header-img">
                 <div class="img-backdrop py-2 d-flex flex-column flex-grow-1 rounded-t-lg">
@@ -91,7 +60,7 @@
                         <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text mr-2">
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">groups</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-medium">{{participant}}/40</span>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">{{participant}}/62</span>
                                 <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Peserta</span>
                             </div>
                             <div class="d-flex flex-row">
@@ -203,10 +172,20 @@
 
                 <span class="font-weight-bold primary--text text-overline">Personal Data</span>
                 <v-divider class="mb-3 mb-5"></v-divider>
+                <v-alert
+                    :value="alert"
+                    dismissible
+                    border="top"
+                    :color="notif.color"
+                    :type="notif.type"
+                >
+                    <!-- {{ notif.message }} -->
+                    <span class="text-caption">{{ notif.message }}</span>
+                </v-alert>
                 <v-form 
                     ref="form"
                     v-model="valid"
-                    class="d-flex flex-column"
+                    class="d-flex flex-column mt-2"
                     lazy-validation
                     @submit.prevent="submitForm"
                 >
@@ -325,8 +304,11 @@
 </template>
 
 <script>
+const courseId = `${process.env.NUXT_ENV_COURSE_IOT_ID}`
+
 export default {
     data: () => ({
+        // courseId: 'Uga9MrhI3g6U3BfVIDI4',
         participant: 0,
         rating: 5,
         loading: false,
@@ -360,9 +342,10 @@ export default {
         show1: false,
         show2: false,
         notif: {
-            color: '',
-            icon: '',
-            message: ''
+            type: 'success',
+            color: 'success',
+            icon: 'check_circle',
+            message: 'Success '
         },
         firstName: '',
         firstNameRules: [
@@ -390,11 +373,20 @@ export default {
             v => !!v || 'Status wajib di isi',
         ]
     }),
+    created() {
+        const db        = this.$fire.firestore
+        const courseRef = db.doc(`courses/${courseId}`)
+        const query     = db.collection('participant').where('course', '==', courseRef).where('paymentStats', '==', 2)
+        query.onSnapshot(querySnapshot => {
+            this.participant = querySnapshot.size
+        })
+    },
     methods: {
         showNotif(req, message) {
             switch (req) {
                 case 'success':
                     this.notif = {
+                        type: 'success',
                         color: 'success',
                         icon: 'check_circle',
                         message: `${message}`
@@ -403,6 +395,7 @@ export default {
                 
                 case 'info':
                     this.notif = {
+                        type: 'info',
                         color: 'light-blue',
                         icon: 'info',
                         message: `${message}`
@@ -411,6 +404,7 @@ export default {
 
                 case 'warning':
                     this.notif = {
+                        type: 'warning',
                         color: 'warning',
                         icon: 'warning',
                         message: `${message}`
@@ -419,6 +413,7 @@ export default {
                 
                 case 'error':
                     this.notif = {
+                        type: 'error',
                         color: 'error',
                         icon: 'error',
                         message: `${message}`
@@ -427,6 +422,7 @@ export default {
 
                 default:
                     this.notif = {
+                        type: '',
                         color: '',
                         icon: '',
                         message: ''
@@ -454,22 +450,30 @@ export default {
 
                 this.$axios.post('/api/users', bodyData)
                     .then(resData => {
-                        this.$axios.post('/api/course/enroll', {
-                            courseId: 'Xl204LuMCZ8MmWdLioEN',
+                        const bodyData = {
+                            courseId,
                             userId: resData.data.data.userId
-                        }).then(resSecData => {
+                        }
+
+                        this.$axios.post('/api/course/enroll', bodyData )
+                        .then(resSecData => {
                             this.loading = false
                             this.showNotif('success', `Data berhasil di simpan. Terima Kasih`)
                             this.$router.push('/iot/success')
                         }).catch(e => {
-                            console.log(e)
-                            this.showNotif('error', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
+                            const error = e.response.data
                             this.loading = false
+                            
+                            if (error.code === 'ERR_DATA_EXIST') return this.showNotif('warning', `Maaf, Email sudah terdaftar.`) 
+
+                            if (error.code === 'ERR_DATA_LIMIT') return this.showNotif('warning', `Maaf, Quota pendaftaran sudah penuh.`)
+
+                            this.showNotif('warning', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
                         })
                     })
                     .catch(e => {
-                        console.log(e)
-                        this.showNotif('error', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
+                        console.log(e, 'bawah')
+                        this.showNotif('warning', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
                         this.loading = false
                     })
             }
