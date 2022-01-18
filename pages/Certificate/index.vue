@@ -120,7 +120,7 @@
                     this.desserts = !res.code ? await Promise.all(res.map(item => { 
                     return {
                         id: item.id,
-                        fullName: item.certificate.name,
+                        fullName: item.user.fullName,
                         email: item.user.email,
                         course: item.certificate.title,
                         courseType: item.course.courseType,

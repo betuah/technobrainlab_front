@@ -1,7 +1,7 @@
 <template>
     <v-container fill-height>
-        <v-card elevation="3" class="col-12 col-md-10 mx-auto pa-0 rounded-lg">
-            <div class="text-uppercase d-flex flex-column indigo lighten-2 pa-0">
+        <v-card elevation="3" class="col-12 mx-auto pa-0 rounded-lg">
+            <div class="d-flex flex-column indigo lighten-2 pa-0">
                 <div class="d-flex flex-column-reverse flex-md-row flex-md-row px-5 py-4">
                     <div class="d-flex flex-row mx-md-0 mt-5 mt-md-0 justify-center align-center">
                         <span class="font-weight-bold text-h5 light-blue--text text--lighten-5 mr-1">IoT</span>
@@ -87,7 +87,7 @@
             { text: 'Course', value: 'title', class: "" },
             { text: 'E-Mail', value: 'email', class: "" },
             { text: 'Payment Stats', value: 'paymentStats', class: "" },
-            { text: 'Completion', value: 'completion', class: "success--text font-weight-bold" }
+            { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold" }
         ],
         desserts: [],
         editedIndex: -1,
@@ -126,7 +126,7 @@
                 this.getData()
             },
             goBack() {
-                this.$router.push('/')
+                this.$router.push('/iot')
             }
         }
     }
