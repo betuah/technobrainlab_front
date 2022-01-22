@@ -14,9 +14,9 @@
                         contain
                     >
                     </v-img>
-                    <span class="text-h5 font-weight-black mt-5">Berhasil</span>
-                    <span class="text-body-2 grey--text font-weight-medium my-2 text-center">Terima Kasih data kamu telah tersimpan.</span>
-
+                    <span class="text-h5 primary--text font-weight-black mt-5">Berhasil</span>
+                    <span class="text-caption grey--text font-weight-light my-2 text-center">Terima Kasih data kamu telah tersimpan. Anda dapat melihat status data Anda pada tombol Cek Verifikasi yang terletak di bawah form pendaftara.</span>
+                    
                     <div class="mt-5 d-flex flex-row justify-center align-center">
                         <v-btn @click="goBack()" class="primary--text mr-4">Kembali</v-btn>
                     </div>

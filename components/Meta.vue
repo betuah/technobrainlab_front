@@ -63,7 +63,7 @@
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">groups</v-icon>
                                 <span class="ml-1 text-subtitle-2 font-weight-medium">{{participant}}</span>
-                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Peserta</span>
+                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Peserta Terdaftar</span>
                             </div>
                             <div class="d-flex flex-row">
                                 <v-icon small color="brown lighten-1">language</v-icon>
@@ -102,7 +102,7 @@
                                     plain 
                                     x-small 
                                     class="pa-0 ml-1" 
-                                    href="https://www.dropbox.com/s/flotd7d3e7vp2da/aws-silabus-2021.pdf" 
+                                    href="https://www.dropbox.com/s/ns1wxfi23fxlwvw/Workshop%20Dasar%20Teknis%20teknologi%20XR%20untuk%20Metaverse%20%28pemulatingkat%20dasar%29.pdf" 
                                     target="_blank"
                                 >
                                     (download silabus)
@@ -339,7 +339,7 @@
                 </div>
                 <div class="mx-auto mb-2">
                     <span class="white--text text-caption">WA :&nbsp;</span>
-                    <span class="white--text text-caption font-weight-bold">+62 812 9065 4582</span>
+                    <span class="white--text text-caption font-weight-bold">+62 857-2018-7909</span>
                 </div>
                 <div class="d-flex flex-column-reverse flex-md-row-reverse text-caption justify-center align-center white--text font-weight-light">
                     <div class="d-flex flex-row">
