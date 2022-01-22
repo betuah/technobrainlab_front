@@ -2,7 +2,6 @@
     <div class="fill-height yellowCream d-flex justify-center align-center">
         <v-img
             contain
-            max-width="860"
             src="/maintenance.jpg"
         ></v-img>
         <!-- <Registration /> -->
