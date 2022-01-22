@@ -11,7 +11,7 @@ export const mutations = {
 export const actions = {
     async getAll({commit}, data) {
         try {
-            const res = await this.$axios.get('/api/certification')
+            const res = await this.$axios.get('/api/certificate')
             await commit('STORE_CERTIFICATE_DATA', res.data.data)
 
             if (res.data.code === 'OK') return res.data.data
