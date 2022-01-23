@@ -148,7 +148,7 @@
                                     plain 
                                     x-small 
                                     class="pa-0 ml-1" 
-                                    href="https://www.dropbox.com/s/flotd7d3e7vp2da/aws-silabus-2021.pdf" 
+                                    href="https://firebasestorage.googleapis.com/v0/b/technobrain-dev.appspot.com/o/assets%2FWrokshop%20Dasar%20Teknis%20teknologi%20XR%20untuk%20Metaverse%20(pemula%20tingkat%20dasar).pdf?alt=media&token=6642bc7b-d731-404e-8842-c5393916a42f" 
                                     target="_blank"
                                 >
                                     (download silabus)

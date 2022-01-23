@@ -343,7 +343,7 @@
                 this.getData()
             },
             goBack() {
-                this.$router.push('/iot')
+                this.$router.push('/meta')
             }
         }
     }

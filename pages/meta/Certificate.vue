@@ -160,7 +160,7 @@
                 this.getData()
             },
             goBack() {
-                this.$router.push('/')
+                this.$router.push('/meta')
             }
         }
     }
