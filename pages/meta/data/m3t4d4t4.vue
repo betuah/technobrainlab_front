@@ -309,7 +309,6 @@
                         this.$refs.notif.show('success', 'Generate certificate successfully!')
                         this.alertConfirm = false
                         this.refreshData()
-                        this
                     } else {
                         this.$refs.notif.show('info', 'No data selected!')
                     }
