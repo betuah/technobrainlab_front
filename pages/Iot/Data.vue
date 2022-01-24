@@ -215,11 +215,15 @@
             async genAnyCertificate() {
                 try {
                     this.loading = true
-                    if (this.sselectedRows.length > 0) {
-                        await this.$axios.post(`/api/certificate/generate/any`, {
-                            "courseId": `${process.env.NUXT_ENV_COURSE_IOT_ID}`,
-                            "participantData": [...this.selectedRows]
-                        })
+                    const bodyData = {
+                        "courseId": `${process.env.NUXT_ENV_COURSE_IOT_ID}`,
+                        "participantData": [...this.selectedRows]
+                    }
+
+                    console.log(bodyData)
+
+                    if (this.selectedRows.length > 0) {
+                        await this.$axios.post(`/api/certificate/generate/any`, bodyData)
                         this.$refs.notif.show('success', 'Generate certificate successfully!')
                         this.alertConfirm = false
                         this.refreshData()
@@ -228,6 +232,7 @@
                         this.$refs.notif.show('info', 'No data selected!')
                     }
                 } catch (e) {
+                    console.log(e)
                     this.$refs.notif.show('error', `${'Failed to create certificate.'}`)
                     this.alertConfirm = false
                     this.loading = false

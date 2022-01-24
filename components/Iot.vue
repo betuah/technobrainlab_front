@@ -448,6 +448,8 @@ export default {
                     address: null
                 }
 
+                console.log(bodyData)
+
                 this.$axios.post('/api/users', bodyData)
                     .then(resData => {
                         const bodyData = {
