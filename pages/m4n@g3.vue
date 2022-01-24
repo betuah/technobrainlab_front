@@ -193,7 +193,7 @@
 </template>
 
 <script>
-    import AlertConfirm from '../../../components/AlertConfirm.vue'
+    import AlertConfirm from '../components/AlertConfirm.vue'
 
     export default {
         components: { AlertConfirm },
@@ -203,12 +203,12 @@
             selectedRows: [],
             loading: false,
             headers: [
-                { text: 'Full Name', value: 'fullName', class: "secondary--text font-weight-bold", sortable: false  },
-                { text: 'Course', value: 'title', class: "", sortable: false },
-                { text: 'E-Mail', value: 'email', class: "", sortable: false },
-                { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: false },
-                { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: false },
-                { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
+                { text: 'Full Name', value: 'fullName', class: "secondary--text font-weight-bold"},
+                { text: 'Course', value: 'title', class: ""},
+                { text: 'E-Mail', value: 'email', class: ""},
+                { text: 'Payment Stats', value: 'paymentStats', class: ""},
+                { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold"},
+                { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold"}
             ],
             desserts: [],
             editedIndex: -1,
@@ -296,11 +296,11 @@
                     this.loading = false
                 }
             },
-            async genAnyCertificate() {
+            async genAnyCertificate(courseId) {
                 try {
                     this.loading = true
                     const bodyData = {
-                        "courseId": `${process.env.NUXT_ENV_COURSE_META}`,
+                        "courseId": `${courseId}`,
                         "participantData": [...this.selectedRows]
                     }
 
@@ -330,8 +330,10 @@
             async getData() {
                 this.loading = true
                 try {
-                    const res  = await this.$axios.get(`/api/course/enroll/${process.env.NUXT_ENV_COURSE_META}`)
+                    const res  = await this.$axios.get(`/api/course/enroll/all`)
                     this.desserts = res.data.data
+
+                    console.log(this.desserts[1].fullName)
                     this.loading = false
                 } catch (e) {
                     if ((e.response && e.response.data.code) == "ERR_DATA_EMPTY") {
