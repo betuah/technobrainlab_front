@@ -4,7 +4,7 @@
         <ImageModal ref="image" />
         <Notif ref="notif" />
 
-        <v-card elevation="3" class="col-12 mx-auto pa-0 rounded-lg">
+        <v-card elevation="3" class="tw-border-0 tw-border-hidden col-12 mx-auto pa-0 rounded-lg">
             <div class="d-flex flex-column indigo lighten-2 pa-0">
                 <div class="d-flex flex-column-reverse flex-md-row flex-md-row px-5 py-4">
                     <div class="d-flex flex-row mx-md-0 mt-5 mt-md-0 justify-center align-center">
@@ -89,32 +89,24 @@
                                 check
                             </v-icon>
                         </td>
-                        <td @click ="toggle(item.participantId)">
+                        <td>
                             <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.title}}</span>
                         </td>
-                        <td @click ="toggle(item.participantId)">
-                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.email}}</span>
-                        </td>
-                        <td @click ="toggle(item.participantId)">
-                            <v-chip
-                                small
-                                class="pa-3 white--text text-caption font-weight-light text-capitalize"
-                                :color="item.paymentStats == '1' ? 'warning lighten-1' : ( item.paymentStats == '2' ? 'green lighten-1' : 'red lighten-1')"
-                            >
-                                {{ item.paymentStats == '1' ? 'Process' : ( item.paymentStats == '2' ? 'Accepted' : 'Reject') }}
-                            </v-chip>
-                        </td>
-                        <td @click ="toggle(item.participantId)">
-                            <v-chip
-                                small
-                                class="pa-3 white--text text-caption font-weight-light text-capitalize"
-                                :color="item.completion == 0 ? 'warning lighten-1' : 'green lighten-1'"
-                            >
-                                {{ item.completion == 0 ? 'Not Complete' : 'Completed' }}
-                            </v-chip>
+                        <td>
+                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.phone}}</span>
                         </td>
                         <td>
-                            <div class="d-flex flex-row justify-end align-center">
+                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.email}}</span>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-row">
+                                <v-chip
+                                    small
+                                    class="pa-3 white--text text-caption font-weight-light text-capitalize"
+                                    :color="item.paymentStats == '1' ? 'warning lighten-1' : ( item.paymentStats == '2' ? 'green lighten-1' : 'red lighten-1')"
+                                >
+                                    {{ item.paymentStats == '1' ? 'Process' : ( item.paymentStats == '2' ? 'Accepted' : 'Reject') }}
+                                </v-chip>
                                 <v-tooltip bottom>
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-btn 
@@ -130,6 +122,19 @@
                                     </template>
                                     <span class="text-caption">View Payment</span>
                                 </v-tooltip>
+                            </div>
+                        </td>
+                        <td @click ="toggle(item.participantId)">
+                            <v-chip
+                                small
+                                class="pa-3 white--text text-caption font-weight-light text-capitalize"
+                                :color="item.completion == 0 ? 'warning lighten-1' : 'green lighten-1'"
+                            >
+                                {{ item.completion == 0 ? 'Not Complete' : 'Completed' }}
+                            </v-chip>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-row justify-end align-center">
                                 <v-tooltip bottom v-if="item.paymentStats == 1">
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-btn 
@@ -205,9 +210,10 @@
             headers: [
                 { text: 'Full Name', value: 'fullName', class: "secondary--text font-weight-bold", sortable: false  },
                 { text: 'Course', value: 'title', class: "", sortable: false },
+                { text: 'Phone', value: 'phone', class: "", sortable: false },
                 { text: 'E-Mail', value: 'email', class: "", sortable: false },
-                { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: false },
-                { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: false },
+                { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: true },
+                { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: true },
                 { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
             ],
             desserts: [],

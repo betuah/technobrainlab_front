@@ -2,7 +2,7 @@
     <v-container class="">
         <Notif ref="notif" />
 
-        <v-card class="col-md-8 my-8 mx-auto pa-0 d-flex flex-column rounded-lg">
+        <v-card class="tw-border-0 tw-border-hidden col-md-8 my-8 mx-auto pa-0 d-flex flex-column rounded-lg">
             <div class="title-backdrop d-flex flex-column flex-grow-1 rounded-t-lg bg-header-img">
                 <div class="img-backdrop py-2 d-flex flex-column flex-grow-1 rounded-t-lg">
                     <div class="d-flex flex-row align-center">
@@ -185,8 +185,8 @@
             
             <div class="d-flex flex-column px-5 pt-5 mx-auto">
                 <div class="d-flex flex-column mb-5">
-                    <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1">Daftar Sekarang</span>
-                    <span class="text-center text-caption font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span> 
+                    <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1 mb-2">Information</span>
+                    <span class="text-center tw-tracking-widest text-caption font-weight-light grey--text">Mohon maaf pendaftaran sudah ditutup. Bagi para peserta pelatihan yang telah mendaftar, kami telah mengirimkan link video conference beserta link invitaion group whatapps pada email yang telah terdaftar. Terima kasih dan selamat belajar. Sampai jumpa dipelatihan. ❤️‍🔥</span> 
                     <div class="d-flex flex-row justify-center align-center col-4 my-2 mx-auto">
                         <div class="mx-2">
                             <v-img
@@ -207,131 +207,6 @@
                     </div>
                 </div>
 
-                <span class="font-weight-bold primary--text text-overline">Personal Data</span>
-                <v-divider class="mb-3 mb-5"></v-divider>
-                <v-form 
-                    ref="form"
-                    v-model="valid"
-                    class="d-flex flex-column"
-                    lazy-validation
-                    @submit.prevent="submitForm"
-                >
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-md-row">
-                            <v-text-field
-                                v-model="firstName"
-                                class="mr-2"
-                                name="firstName"
-                                dense
-                                color="primary"
-                                prepend-inner-icon="assignment_ind"
-                                :rules="firstNameRules"
-                                label="Nama depan"
-                                required
-                                outlined
-                            ></v-text-field>
-                            <v-text-field
-                                v-model="lastName"
-                                class="ml-2"
-                                name="lastName"
-                                dense
-                                color="primary"
-                                prepend-inner-icon="assignment_ind"
-                                :rules="lastNameRules"
-                                label="Nama belakang"
-                                hint="Tidak ada nama belakang isi '.'"
-                                required
-                                outlined
-                            ></v-text-field>
-                        </div>
-                        <v-text-field
-                            v-model="email"
-                            name="email"
-                            dense
-                            color="primary"
-                            prepend-inner-icon="email"
-                            :rules="emailRules"
-                            label="Alamat Email kamu"
-                            required
-                            outlined
-                        ></v-text-field>
-                        <v-text-field
-                            v-model="no_tlpn"
-                            name="no_tlpn"
-                            dense
-                            color="primary"
-                            prepend-inner-icon="phone"
-                            :rules="no_tlpnRules"
-                            label="No. Whatsapp"
-                            hint="Nomor whatsapp aktif Contoh: +62 812 1122 3344"
-                            required
-                            outlined
-                        ></v-text-field>
-                        <v-select
-                            v-model="status"
-                            name="status"
-                            dense
-                            outlined
-                            color="primary lighten-1"
-                            item-text="status"
-                            item-value="status"
-                            :items="statusData"
-                            :rules="statusRules"
-                            label="Pekerjaan kamu saat ini"
-                            prepend-inner-icon="school"
-                            required
-                        ></v-select>
-                    </div>
-                    
-                    <span class="font-weight-bold primary--text text-overline">Investasi</span>
-                    <v-divider></v-divider>
-                    <span class="mb-3 mt-2 text-caption font-weight-light">Kamu dapat berinvestasi melalui :</span>
-                    <div class="mb-5 d-flex">
-                        <v-card elevation="2" class="col-md-10 pa-0 mx-md-auto d-flex flex-column rounded-lg">
-                            <div class="d-flex flex-column px-4 py-2 bg-bank-img">
-                                <span class="font-weight-bold text-body-2 text-md-subtitle-2 brown--text">MANDIRI (008)</span>
-                                <span class="text-body-1 text-md-h6 primary--text font-weight-black my-3 my-md-2">1 6 4 . 0 0 0 2 3 6 7 . 3 4 2</span>
-                                <div>
-                                    <v-divider class="divider-dash mb-2 mt-1"></v-divider>
-                                </div>
-                                <span class="text-body-2 text-md-subtitle-2 text-uppercase font-weight-bold secondary--text">Koperasi Inovasi Bersama SEAMOLEC</span>
-                            </div>
-                            <div class="d-flex flex-row px-4 py-4 brown--text" style="border-top: 3px solid #6488D7">
-                                <span class="my-auto text-uppercase font-weight-light">Jumlah</span>
-                                <v-spacer></v-spacer>
-                                <span class="font-weight-black">Rp. 150.000</span>
-                            </div>
-                        </v-card>
-                    </div>
-                    <div>
-                        <v-file-input
-                            dense
-                            outlined
-                            color="cyan lighten-1"
-                            :rules="paymentPicsRules"
-                            accept="image/png, image/jpeg"
-                            placeholder="Unggah Bukti Transfer"
-                            prepend-icon=""
-                            prepend-inner-icon="photo_camera"
-                            show-size
-                            label="Unggah Bukti Transfer"
-                            required
-                            @change="onPicsUpload"
-                        ></v-file-input>
-                    </div>
-
-                    <v-divider class="mb-5"></v-divider>
-                    <div class="mb-5">
-                        <v-btn
-                            :loading="loading"
-                            type="submit"
-                            block
-                            color="primary"
-                        >
-                            Daftar
-                        </v-btn>
-                    </div>
-                </v-form>
             </div>
             <div class="d-flex flex-column pa-5 primary bg-footer-img">
                 <div class="d-flex flex-row justify-center mb-4">
