@@ -63,8 +63,8 @@
                         <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text mr-2">
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">groups</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-medium">{{participant}}</span>
-                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Peserta Terdaftar</span>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">{{participant}} / 90</span>
+                                <span class="ml-1 text-subtitle-2 brown--text text--lighten-3 font-weight-regular">Peserta</span>
                             </div>
                             <div class="d-flex flex-row">
                                 <v-icon small color="brown lighten-1">language</v-icon>
@@ -114,7 +114,7 @@
                         <div class="d-flex flex-column flex-grow-1 flex-wrap secondary--text">
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small>groups</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-bold">{{participant}}</span>
+                                <span class="ml-1 text-subtitle-2 font-weight-bold">{{participant}} / 90</span>
                                 <span class="ml-1 text-subtitle-2 grey--text font-weight-regular">Peserta</span>
                             </div>
                             <div class="d-flex flex-row mb-1">
@@ -186,6 +186,7 @@
                 <div class="d-flex flex-column mb-5">
                     <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1">Daftar Sekarang</span>
                     <span class="text-center text-caption font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span>
+                    <span class="text-center text-caption font-weight-light secondary--text">Pendaftaran di tutup pada tgl 6 pukul 21:00 WIB </span>
                     <div class="d-flex flex-row justify-center align-center col-4 my-2 mx-auto">
                         <div class="mx-2">
                             <v-img
