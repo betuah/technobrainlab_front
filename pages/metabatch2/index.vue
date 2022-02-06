@@ -127,7 +127,7 @@
                             </div>
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">calendar_month</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-medium">2 - 3 Feb 2022</span>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">9 - 10 Feb 2022</span>
                             </div>
                         </div>
                         <v-spacer></v-spacer>
