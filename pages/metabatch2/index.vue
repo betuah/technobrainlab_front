@@ -90,7 +90,7 @@
                             <v-spacer></v-spacer>
                             <div class="d-flex flex-row mb-1">
                                 <v-icon small color="brown lighten-1">calendar_month</v-icon>
-                                <span class="ml-1 text-subtitle-2 font-weight-medium">2 - 3 Feb 2022</span>
+                                <span class="ml-1 text-subtitle-2 font-weight-medium">9 - 10 Feb 2022</span>
                             </div>
                             <div class="d-flex flex-row mb-1 align-center">
                                 <v-icon small color="brown lighten-1">book</v-icon>
@@ -186,7 +186,7 @@
                 <div class="d-flex flex-column mb-5">
                     <span class="text-center text-h5 font-weight-bold primary--text text--lighten-1">Daftar Sekarang</span>
                     <span class="text-center text-caption font-weight-light grey--text">Daftarkan dirimu & lengkapi pengetahuanmu bersama kami</span>
-                    <span class="text-center text-caption font-weight-light secondary--text">Pendaftaran di tutup pada tgl 6 pukul 21:00 WIB </span>
+                    <span class="text-center text-caption font-weight-light secondary--text font-weight-bold">Pendaftaran di tutup pada tgl 8 pukul 21:00 WIB </span>
                     <div class="d-flex flex-row justify-center align-center col-4 my-2 mx-auto">
                         <div class="mx-2">
                             <v-img
