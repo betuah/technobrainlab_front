@@ -495,7 +495,7 @@ export default {
             }
         },
         goVerivied() {
-            this.$router.push('/meta/verification')
+            this.$router.push('/metabatch2/verification')
         }
     }
 }
