@@ -116,6 +116,7 @@
         methods: {
             async getData() {
                 this.loading = true
+                
                 try {
                     const res = await this.$axios.get(`/api/certificate/course/${process.env.NUXT_ENV_COURSE_META_2}`)
                     this.desserts = !res.code ? await Promise.all(res.data.data.map(item => { 
