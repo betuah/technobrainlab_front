@@ -23,6 +23,18 @@
                         <span class="tw-text-white tw-font-bold tw-text-lg tw-tracking-widest">Pendaftaran</span>
                         <span class="text-caption white--text font-italic">*Pendaftaran akan di tutup pada tanggal <span class="font-weight-bold primary--text">12 Juni 2022</span>.</span>
                      </div>
+                     <div>
+                        <v-alert
+                           :value="alert"
+                           dismissible
+                           border="top"
+                           :color="notif.color"
+                           :type="notif.type"
+                        >
+                           <!-- {{ notif.message }} -->
+                           <span class="text-caption">{{ notif.message }}</span>
+                        </v-alert>
+                     </div>
                      <v-form 
                         ref="form"
                         v-model="valid"
@@ -280,17 +292,6 @@
                </div>
             </v-card>
          </v-dialog>
-
-         <v-alert
-            :value="true"
-            dismissible
-            border="top"
-            :color="notif.color"
-            :type="notif.type"
-         >
-            <!-- {{ notif.message }} -->
-            <span class="text-caption">{{ notif.message }}</span>
-         </v-alert>
       </div>
    </div>
 </template>
@@ -437,24 +438,18 @@ export default {
                }
             }
 
-            console.log(bodyData)
+            // console.log(bodyData)
 
-            this.dialog = true
-            this.loading = false
-
-            // this.showNotif('warning', `${'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
-
-            // this.$axios.post('/api/order/create', bodyData)
-            //    .then(resData => {
-            //       console.log(resData)
-            //       this.dialog = true
-            //       this.loading = false
-            //    })
-            //    .catch(e => {
-            //       console.log(e, 'bawah')
-            //       this.showNotif('warning', `${e.massage ? e.message : 'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
-            //       this.loading = false
-            //    })
+            this.$axios.post('/api/order/create', bodyData)
+               .then(resData => {
+                  this.dialog = true
+                  this.loading = false
+               })
+               .catch(e => {
+                  console.log(e, 'bawah')
+                  this.showNotif('warning', `${'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
+                  this.loading = false
+               })
          }
       }
    }
