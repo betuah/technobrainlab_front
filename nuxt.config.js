@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import themeColors from './color'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -16,16 +17,28 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        src: "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js",
+        type: "module"
+      },
+      {
+        src: "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+      }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    // '@/assets/main.css'
+    '@/assets/main.css',
+    '@node_modules/@fortawesome/fontawesome-svg-core/styles.css',
+    'video.js/dist/video-js.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/fontawesome.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,6 +54,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     [
       '@nuxtjs/firebase',
       {
@@ -92,6 +106,7 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       options: { customProperties: true },
       dark: false,
@@ -105,20 +120,7 @@ export default {
           error: colors.deepOrange,
           success: colors.green
         },
-        light: {
-          accent: '#8c9eff',
-          error: '#b71c1c',
-          primary: '#6488D7',
-          primaryLight1: '#F9F8FD',
-          secondary: '#F06C7C',
-          bgGrey: '#F4F6F8',
-          activeGrey: '#F3F3F4',
-          whiteSmoke: '#FAFAFA',
-          deepcyan: '#00A9B6',
-          primaryBrown: '#383433',
-          lightBrown: '#E6DCD2',
-          yellowCream: '#FFE7C5'
-        },
+        light: {...themeColors},
       }
     },
     defaultAssets: {
@@ -127,6 +129,63 @@ export default {
       },
       icons: 'md'
     },
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        token: {
+          property: 'accessToken',
+          data: 'accessToken',
+          global: true,
+          maxAge: 1800,
+          type: 'Bearer'
+        },
+        refreshToken: {
+          property: 'refreshToken',
+          data: 'refreshToken',
+          maxAge: 60 * 60 * 24 * 30
+        },
+        user: {
+          property: false
+        },
+        endpoints: {
+          login: { url: '/api/auth/signin', method: 'post' },
+          refresh: { url: '/api/auth/token', method: 'post' },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: { url: '/api/user', method: 'get' }
+        },
+        tokenRequired: true
+      },
+      google: {
+        clientId: `${process.env.GOOGLE_CLIENT_ID}`,
+        scope: ['profile', 'email'],
+        codeChallengeMethod: '',
+        responseType: 'code',
+        endpoints: {
+          token: `${process.env.API_URL}/api/v1/auth/google`,
+          userInfo: `${process.env.API_URL}/api/v1/user`
+        },
+        token: {
+          property: 'accessToken',
+          data: 'accessToken',
+          global: true,
+          maxAge: 1800,
+          type: 'Bearer'
+        },
+        refreshToken: {
+          property: 'refreshToken',
+          data: 'refreshToken',
+          maxAge: 60 * 60 * 24 * 30
+        }
+      }
+    },
+    redirect: {
+      login: '/login',
+      home: '/course'
+    },
+    localStorage: false
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
