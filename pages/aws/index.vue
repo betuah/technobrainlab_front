@@ -482,7 +482,7 @@ export default {
                order_details : {
                   payment_type : `${this.payment_type}`,
                   bank : "bca",
-                  items : ["6295bdda05b4d447b1e592dc"]
+                  items : [process.env.NUXT_ENV_COURSE_AWS]
                }
             }
 
