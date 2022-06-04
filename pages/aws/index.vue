@@ -182,7 +182,7 @@
 
                         <div class="d-flex flex-column mb-3">
                            <v-select
-                              v-model="status"
+                              v-model="payment_type"
                               name="status"
                               dense
                               hide-details="auto"
@@ -369,7 +369,7 @@ export default {
             payment_type: 'BCA Virtual Account (Dicek otomatis)'
          },
          {
-            id: 'transfer_manual',
+            id: 'manual',
             payment_type: 'Transfer BCA (Dicek manual)'
          },
       ],
