@@ -5,7 +5,7 @@ module.exports = {
     // preflight: false,
   },
   prefix: 'tw-',
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",

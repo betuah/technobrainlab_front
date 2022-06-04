@@ -16,7 +16,7 @@
                </div>
             </div>
 
-            <div class="d-flex flex-column flex-column-reverse flex-md-row my-5 mb-md-0">
+            <div class="d-flex flex-column flex-column-reverse flex-md-row mt-3 mb-5">
                <div class="col-12 col-md-7 pa-0 d-flex flex-column mt-2 mt-md-0">
                   <div class="tw-shadow-lg tw-rounded-2xl tw-bg-white d-flex flex-column">
                      <div class="tw-bg-[url('https://blog.e-zest.com/hubfs/How%20to%20use%20AWS%20Backup%20service.png')] tw-w-full tw-bg-cover tw-bg-center tw-rounded-t-2xl pa-6 d-flex flex-column">
@@ -42,6 +42,10 @@
                         lazy-validation
                         @submit.prevent="submitForm"
                      >
+                        <div class="d-flex flex-row align-center mb-1">
+                           <span class="text-uppercase text-overline tw-tracking-widest mx-2">Biodata Peserta</span>
+                           <v-divider></v-divider>
+                        </div>
                         <div class="d-flex flex-column">
                               <div class="d-flex flex-md-row">
                                  <v-text-field
@@ -49,7 +53,7 @@
                                     class="mr-1 rounded-lg text--caption"
                                     name="firstName"
                                     dense
-                                    color="secondary"
+                                    color="primary"
                                     hide-details="auto"
                                     :rules="firstNameRules"
                                     required
@@ -69,7 +73,7 @@
                                     class="ml-1 rounded-lg text--caption"
                                     name="lastName"
                                     dense
-                                    color="secondary"
+                                    color="primary"
                                     hide-details="auto"
                                     :rules="lastNameRules"
                                     hint="Tidak ada nama belakang isi '.'"
@@ -91,7 +95,7 @@
                                  name="email"
                                  dense
                                  hide-details="auto"
-                                 color="secondary"
+                                 color="primary"
                                  :rules="emailRules"
                                  class="rounded-lg mt-3 text--caption"
                                  required
@@ -110,7 +114,7 @@
                                  v-model="no_tlpn"
                                  name="no_tlpn"
                                  dense
-                                 color="secondary"
+                                 color="primary"
                                  hide-details="auto"
                                  class="rounded-lg mt-3 text-caption"
                                  :rules="no_tlpnRules"
@@ -131,7 +135,7 @@
                                  name="institution"
                                  dense
                                  hide-details="auto"
-                                 color="secondary"
+                                 color="primary"
                                  :rules="institutionRules"
                                  class="rounded-lg mt-3 text-caption"
                                  required
@@ -171,7 +175,41 @@
                               </v-select>
                         </div>
 
-                        <v-divider class="my-5"></v-divider>
+                        <div class="d-flex flex-row align-center mt-3 mb-1">
+                           <span class="text-uppercase text-overline tw-tracking-widest mx-2">Investasi</span>
+                           <v-divider></v-divider>
+                        </div>
+
+                        <div class="d-flex flex-column mb-3">
+                           <v-select
+                              v-model="status"
+                              name="status"
+                              dense
+                              hide-details="auto"
+                              outlined
+                              color="primary"
+                              item-text="payment_type"
+                              item-value="id"
+                              :items="payment_type_list"
+                              :rules="paymentTypeRules"
+                              required
+                              class="rounded-lg text-caption"
+                           >
+                              <template v-slot:label>
+                                 <div class="text-caption">Pilih metode pembeyaran</div>
+                              </template>
+                              <template v-slot:prepend-inner>
+                                 <div class="d-flex flex-row tw-h-6 align-center mr-1">
+                                    <font-awesome-icon :icon="['fas','money-bill-transfer']" class="tw-text-xs" />
+                                 </div>
+                              </template>
+                           </v-select>
+                        </div>
+
+                        <span class="tw-text-2xs font-italic secondary--text">*Cek email untuk mendapatkan informasi pembayaran dan invoice.</span>
+                        
+                        <v-divider class="my-3"></v-divider>
+
                         <div class="mb-5">
                               <v-btn
                                  :loading="loading"
@@ -180,7 +218,7 @@
                                  color="primary"
                                  class="text-caption text-capitalize rounded-lg"
                               >
-                                 Enroll Kelas
+                                 Daftar dan Enroll Kelas
                               </v-btn>
                         </div>
                      </v-form>
@@ -188,11 +226,6 @@
                </div>
                <div class="col-12 col-md-5 pa-0 d-flex flex-column pl-md-7">
                   <div class="tw-rounded-2xl tw-shadow-lg tw-bg-white pa-5 mb-3 secondary white--text d-flex flex-column">
-                     <div class="d-flex flex-row align-center mx-3 my-3">
-                        <v-divider class="white"></v-divider>
-                        <span class="text-uppercase text-overline tw-tracking-widest mx-2">Investasi</span>
-                        <v-divider class="white"></v-divider>
-                     </div>
                      <div class="d-flex flex-column mx-3">
                         <span class=""><span class="tw-italic tw-line-through">Rp 350.000</span> 60%</span>
                         <span class="text-h4 font-weight-black">Rp 50.000</span>
@@ -247,6 +280,7 @@
                   </div>
                   <div class="tw-rounded-2xl tw-shadow-lg tw-bg-white pa-5 my-2">
                      <div class="d-flex flex-row align-center mx-3">
+                        <v-divider></v-divider>
                         <span class="text-uppercase text-overline tw-tracking-widest mr-2">Penyelengara</span>
                         <v-divider></v-divider>
                      </div>
@@ -329,6 +363,16 @@ export default {
                status: 'Professional'
          }
       ],
+      payment_type_list: [
+         {
+            id: 'bank_transfer',
+            payment_type: 'BCA Virtual Account (Dicek otomatis)'
+         },
+         {
+            id: 'transfer_manual',
+            payment_type: 'Transfer BCA (Dicek manual)'
+         },
+      ],
       name: '',
       show1: false,
       show2: false,
@@ -338,6 +382,10 @@ export default {
          icon: 'check_circle',
          message: 'Success '
       },
+      payment_type: '',
+      paymentTypeRules: [
+         v => !!v || 'Metode Pembayaran harus di isi',
+      ],
       firstName: '',
       firstNameRules: [
          v => !!v || 'Nama depan wajib di isi',
@@ -432,17 +480,15 @@ export default {
                profession: `${this.status}`,
                institution: `${this.institution}`,
                order_details : {
-                  payment_type : "bank_transfer",
+                  payment_type : `${this.payment_type}`,
                   bank : "bca",
-                  items : ["6295ae8f95917ee610cf6b91"]
+                  items : ["6295bdda05b4d447b1e592dc"]
                }
             }
 
-            // console.log(bodyData)
-
             this.$axios.post('/api/order/create', bodyData)
                .then(resData => {
-                  this.dialog = true
+                  this.$router.push('/aws/success')
                   this.loading = false
                })
                .catch(e => {
