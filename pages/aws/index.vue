@@ -196,7 +196,7 @@
                               class="rounded-lg text-caption"
                            >
                               <template v-slot:label>
-                                 <div class="text-caption">Pilih metode pembeyaran</div>
+                                 <div class="text-caption">Pilih metode pembayaran</div>
                               </template>
                               <template v-slot:prepend-inner>
                                  <div class="d-flex flex-row tw-h-6 align-center mr-1">
