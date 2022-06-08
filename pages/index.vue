@@ -1,34 +1,3 @@
 <template>
-    <div class="fill-height yellowCream d-flex justify-center align-center">
-        <v-img
-            contain
-            src="/maintenance.jpg"
-        ></v-img>
-        <!-- <Registration /> -->
-        <!-- <Landing v-if="!isLoggedIn" />
-        <Dashboard v-else /> -->
-    </div>
+   <iframe height="100%" width="100%" src="http://118.98.228.131/techno-brain"></iframe>
 </template>
-
-<script>
-    import { mapState, mapGetters } from 'vuex'
-
-    export default {
-        components: {
-            // Courses: () => import("@/components/courses/Courses"),
-            // Signup: () => import("@/components/auth/signup")
-        },
-        data: () => ({
-            
-        }),
-        computed: {
-            ...mapState({
-                authUser: state => state.authUser,
-            }),
-            ...mapGetters({
-                isLoggedIn: 'isLoggedIn',
-            }),
-        },
-        methods: {}
-    };
-</script>
