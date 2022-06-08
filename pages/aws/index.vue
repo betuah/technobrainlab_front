@@ -226,8 +226,8 @@
                </div>
                <div class="col-12 col-md-5 pa-0 d-flex flex-column pl-md-7">
                   <div class="tw-rounded-2xl tw-shadow-lg tw-bg-white pa-5 mb-3 secondary white--text d-flex flex-column">
-                     <div class="d-flex flex-column mx-3">
-                        <span class=""><span class="tw-italic tw-line-through">Rp 350.000</span> 60%</span>
+                     <div class="d-flex flex-column mx-3 justify-center align-center">
+                        <span class=""><span class="tw-italic tw-line-through">Rp 150.000</span> 60%</span>
                         <span class="text-h4 font-weight-black">Rp 50.000</span>
                      </div>
                   </div>
