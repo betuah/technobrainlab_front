@@ -266,7 +266,7 @@
                         </div> -->
                         <div class="col-4 pa-0 d-flex flex-column justify-center align-center tw-rounded-2xl">
                            <font-awesome-icon :icon="['fas','calendar-check']" class="tw-text-3xl secondary--text"/>
-                           <span class="mt-1 tw-uppercase tw-text-xs tw-font-bold secondary--text text-center">13 - 17 Juni</span>
+                           <span class="mt-1 tw-uppercase tw-text-xs tw-font-bold secondary--text text-center">20 - 24 Juni</span>
                         </div>
                      </div>
                      <v-divider class="my-3 mt-5 mx-3"></v-divider>
@@ -281,7 +281,7 @@
                   <div class="tw-rounded-2xl tw-shadow-lg tw-bg-white pa-5 my-2">
                      <div class="d-flex flex-row align-center mx-3">
                         <v-divider></v-divider>
-                        <span class="text-uppercase text-overline tw-tracking-widest mr-2">Penyelengara</span>
+                        <span class="text-uppercase text-overline tw-tracking-widest mr-2">Penyelenggara</span>
                         <v-divider></v-divider>
                      </div>
                      <div class="d-flex flex-row align-center justify-center">
@@ -364,10 +364,10 @@ export default {
          }
       ],
       payment_type_list: [
-         {
-            id: 'bank_transfer',
-            payment_type: 'BCA Virtual Account (Dicek otomatis)'
-         },
+         // {
+         //    id: 'bank_transfer',
+         //    payment_type: 'BCA Virtual Account (Dicek otomatis)'
+         // },
          {
             id: 'manual',
             payment_type: 'Transfer BCA (Dicek manual)'
