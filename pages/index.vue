@@ -287,7 +287,7 @@
                      <div class="d-flex flex-row align-center justify-center">
                         <div class="col-6 d-flex flex-row align-center justify-center">
                            <v-img
-                              src="/technobrain-logo.png"
+                              src="/aws/technobrain-logo.png"
                               height="40"
                               contain
                            >
@@ -295,7 +295,7 @@
                         </div>
                         <div class="col-6 d-flex flex-row align-center justify-center">
                            <v-img
-                              src="/aws-logo.png"
+                              src="/aws/aws-logo.png"
                               height="35"
                               contain
                            >
