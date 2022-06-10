@@ -31,7 +31,7 @@
     export default {
         methods: {
             goBack() {
-                this.$router.push('/aws')
+                this.$router.push('/')
             }
         }
     };
