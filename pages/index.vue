@@ -486,7 +486,7 @@ export default {
                }
             }
 
-            this.$axios.post('/api/order/create', bodyData)
+            this.$axios.post('/aws/api/order/create', bodyData)
                .then(resData => {
                   this.$router.push('/aws/success')
                   this.loading = false
