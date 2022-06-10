@@ -486,7 +486,7 @@ export default {
                }
             }
 
-            this.$axios.post('/aws/api/order/create', bodyData)
+            this.$axios.post('https://api-technobrainlab.herokuapp.com/api/order/create', bodyData)
                .then(resData => {
                   this.$router.push('/aws/success')
                   this.loading = false
