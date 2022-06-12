@@ -93,7 +93,7 @@
                             <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{courseData.course_title}}</span>
                         </td>
                         <td @click ="toggle(item.id)">
-                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.participant.email}}</span>
+                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.participant.phone_number}}</span>
                         </td>
                         <td @click ="toggle(item.id)">
                             <span class="orange--text font-weight-medium text-body-2 text-caption">Rp. {{item.order.gross_amount}}</span>
@@ -209,7 +209,7 @@
             headers: [
                 { text: 'Full Name', value: 'course_title', class: "secondary--text font-weight-bold", sortable: false  },
                 { text: 'Course', value: 'title', class: "", sortable: false },
-                { text: 'E-Mail', value: 'email', class: "", sortable: false },
+                { text: 'No.Whatsapp', value: 'wa', class: "", sortable: false },
                 { text: 'Gross Amount', value: 'gross_amount', class: "", sortable: false },
                 { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: false },
                 // { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: false },
@@ -235,7 +235,7 @@
             async acceptPayment(id) {
                 try {
                     this.loading = true
-                    await this.$axios.post(`${this.url}/api/paid`, { 
+                    await this.$axios.post(`${this.url}/api/v1/order/paid`, { 
                         order_id: id,
                     })
                     this.$refs.notif.show('success', 'Delete data success!')
@@ -335,11 +335,10 @@
             },
             async getData() {
                 this.loading = true
-                console.log(process.env.NUXT_ENV_COURSE_AWS)
                 try {
                     const res  = await this.$axios.get(`${this.url}/api/v1/course/${process.env.NUXT_ENV_COURSE_AWS}`)
-                    console.log(res.data);
                     this.desserts = res.data.course_participant
+                    console.log(res.data.course_participant);
                     this.courseData = res.data
                     this.loading = false
                 } catch (e) {
