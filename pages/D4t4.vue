@@ -18,6 +18,17 @@
                                 restore
                             </v-icon>
                         </v-btn>
+                        <v-btn small outlined color="white" class="mr-2">
+                            <json-excel
+                                class   = "text-caption"
+                                :data   = "desserts"
+                                :fields = "exportHeader"
+                                worksheet = "Participant Data"
+                                name = "aws-technical-fundamental-data.xls"
+                            >
+                                Download
+                            </json-excel>
+                        </v-btn>
                         <v-btn small color="white" outlined @click="goBack()">
                             <v-icon left>
                                 arrow_back
@@ -198,9 +209,10 @@
 
 <script>
     import AlertConfirm from '../components/AlertConfirm.vue'
+    import JsonExcel from "vue-json-excel";
 
     export default {
-        components: { AlertConfirm },
+        components: { AlertConfirm, JsonExcel },
         data: () => ({
             search: '',
             select: false,
@@ -215,6 +227,13 @@
                 // { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: false },
                 { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
             ],
+            exportHeader: {
+                'Full Name': 'participant.fullName',
+                'Institution': 'participant.institution',
+                'No.whatsapp' : 'participant.phone_number',
+                'Gross Amount' : 'order.gross_amount',
+                'Payment Status' : 'order.payment_status'
+            },
             courseData: null,
             desserts: [],
             url: process.env.NUXT_ENV_API_URL,
@@ -338,7 +357,6 @@
                 try {
                     const res  = await this.$axios.get(`${this.url}/api/v1/course/${process.env.NUXT_ENV_COURSE_AWS}`)
                     this.desserts = res.data.course_participant
-                    console.log(res.data.course_participant);
                     this.courseData = res.data
                     this.loading = false
                 } catch (e) {
