@@ -238,7 +238,7 @@
                     await this.$axios.post(`${this.url}/api/v1/order/paid`, { 
                         order_id: id,
                     })
-                    this.$refs.notif.show('success', 'Delete data success!')
+                    this.$refs.notif.show('success', 'Confirmation Payment success!')
                     this.refreshData()
                 } catch (error) {
                     this.$refs.notif.show('error', 'Failed to accept payment data!')
