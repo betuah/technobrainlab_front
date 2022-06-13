@@ -40,7 +40,7 @@
                 <div class="d-flex align-end indigo px-5 py-3 pt-1 lighten-3">
                     <v-text-field
                         v-model="search"
-                        label="Search anything"
+                        label="Search By Full Name"
                         append-icon="search"
                         dark
                         hide-details
@@ -76,8 +76,8 @@
             <v-data-table
                 v-model="selectedRows"
                 :headers="headers"
-                :items="desserts"
-                :search="search"
+                :items="searchByName"
+                
                 :loading="loading"
                 fixed-header
                 multi-sort
@@ -89,8 +89,8 @@
             >
                 <template v-slot:item="{ item }">
                     <tr :class="selectedRows.indexOf(item.id)>-1 ? 'blue lighten-5 rounded-0 white--text' : ''">
-                        <td class="d-flex align-center" @click ="toggle(item.id)">
-                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.participant.fullName}}</span>
+                        <td class="d-flex align-center">
+                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.fullName}}</span>
                             <v-icon 
                                 class="ml-2"
                                 small
@@ -100,22 +100,22 @@
                                 check
                             </v-icon>
                         </td>
-                        <td @click ="toggle(item.id)">
-                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.participant.institution}}</span>
+                        <td>
+                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.institution}}</span>
                         </td>
-                        <td @click ="toggle(item.id)">
-                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.participant.phone_number}}</span>
+                        <td>
+                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.phone_number}}</span>
                         </td>
-                        <td @click ="toggle(item.id)">
-                            <span class="orange--text font-weight-medium text-body-2 text-caption">Rp. {{item.order.gross_amount}}</span>
+                        <td>
+                            <span class="orange--text font-weight-medium text-body-2 text-caption">Rp. {{item.gross_amount}}</span>
                         </td>
-                        <td @click ="toggle(item.id)">
+                        <td>
                             <v-chip
                                 small
                                 class="pa-3 white--text text-caption font-weight-light text-capitalize"
-                                :color="item.order.payment_status == '1' ? 'green lighten-1' : 'warning lighten-1'"
+                                :color="item.payment_status == '1' ? 'green lighten-1' : 'warning lighten-1'"
                             >
-                                {{ item.order.payment_status == '1' ? 'Accept' : 'Pending' }}
+                                {{ item.payment_status == '1' ? 'Accept' : 'Pending' }}
                             </v-chip>
                         </td>
                         <!-- <td @click ="toggle(item.id)">
@@ -150,10 +150,10 @@
                                             :class="selectedRows.length > 0 ? 'd-none' : 'd-flex'" 
                                             v-bind="attrs" 
                                             v-on="on" 
-                                            :disabled="item.order.payment_status == 1 ? true : false"
+                                            :disabled="item.payment_status == 1 ? true : false"
                                             small 
                                             icon
-                                            @click="acceptPayment(`${item.order.id}`)"
+                                            @click="acceptPayment(`${item.order_id_ref}`)"
                                         >
                                             <v-icon small color="green">check_circle</v-icon>
                                         </v-btn>
@@ -223,7 +223,7 @@
                 { text: 'Institution', value: 'institution', class: "", sortable: false },
                 { text: 'No.Whatsapp', value: 'wa', class: "", sortable: false },
                 { text: 'Gross Amount', value: 'gross_amount', class: "", sortable: false },
-                { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: false },
+                { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: true },
                 // { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: false },
                 { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
             ],
@@ -246,6 +246,11 @@
         }),
         async mounted() {
             await this.getData()
+        },
+        computed: {
+            searchByName() {
+                return this.desserts.map(val => val).filter(items => items.fullName.toLowerCase().includes(this.search.toLowerCase()))
+            }
         },
         methods: {
             async viewPayment(uri) {
@@ -356,7 +361,14 @@
                 this.loading = true
                 try {
                     const res  = await this.$axios.get(`${this.url}/api/v1/course/${process.env.NUXT_ENV_COURSE_AWS}`)
-                    this.desserts = res.data.course_participant
+                    this.desserts = res.data.course_participant.map(items => {
+                        return {
+                            participant_id: items.participant.id,
+                            ...items.participant,
+                            order_id_ref: items.order.id,
+                            ...items.order
+                        }
+                    })
                     this.courseData = res.data
                     this.loading = false
                 } catch (e) {
