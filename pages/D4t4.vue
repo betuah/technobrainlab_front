@@ -8,8 +8,8 @@
             <div class="d-flex flex-column indigo lighten-2 pa-0">
                 <div class="d-flex flex-column-reverse flex-md-row flex-md-row px-5 py-4">
                     <div class="d-flex flex-row mx-md-0 mt-5 mt-md-0 justify-center align-center">
-                        <span class="font-weight-bold text-h5 light-blue--text text--lighten-5 mr-1">Participant</span>
-                        <span class="font-weight-light text-h5 light-blue--text text--lighten-5">Data</span>
+                        <span class="font-weight-bold text-h5 light-blue--text text--lighten-5 mr-1">{{courseData ? courseData.course_title : ''}}</span>
+                        <span class="font-weight-light text-h5 light-blue--text text--lighten-5"></span>
                     </div>
                     <v-spacer></v-spacer>
                     <div class="d-flex flex-row-reverse flex-md-row mb-3 ma-md-0 justify-space-between align-center">
@@ -90,7 +90,7 @@
                             </v-icon>
                         </td>
                         <td @click ="toggle(item.id)">
-                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{courseData.course_title}}</span>
+                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.participant.institution}}</span>
                         </td>
                         <td @click ="toggle(item.id)">
                             <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.participant.phone_number}}</span>
@@ -208,7 +208,7 @@
             loading: false,
             headers: [
                 { text: 'Full Name', value: 'course_title', class: "secondary--text font-weight-bold", sortable: false  },
-                { text: 'Course', value: 'title', class: "", sortable: false },
+                { text: 'Institution', value: 'institution', class: "", sortable: false },
                 { text: 'No.Whatsapp', value: 'wa', class: "", sortable: false },
                 { text: 'Gross Amount', value: 'gross_amount', class: "", sortable: false },
                 { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: false },
