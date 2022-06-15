@@ -104,7 +104,7 @@
                             <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.institution}}</span>
                         </td>
                         <td>
-                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.email}}</span>
+                            <span class="success--text font-weight-medium text-body-2 text-caption">{{item.email}}</span>
                         </td>
                         <td>
                             <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.phone_number}}</span>

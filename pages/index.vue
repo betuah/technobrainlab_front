@@ -21,7 +21,7 @@
                   <div class="tw-shadow-lg tw-rounded-2xl tw-bg-white d-flex flex-column">
                      <div class="tw-bg-[url('https://blog.e-zest.com/hubfs/How%20to%20use%20AWS%20Backup%20service.png')] tw-w-full tw-bg-cover tw-bg-center tw-rounded-t-2xl pa-6 d-flex flex-column">
                         <span class="tw-text-white tw-font-bold tw-text-lg tw-tracking-widest">Pendaftaran</span>
-                        <span class="text-caption white--text font-italic">*Pendaftaran akan di tutup pada tanggal <span class="font-weight-bold primary--text">19 Juni 2022</span>.</span>
+                        <span class="text-caption white--text font-italic">*Pendaftaran akan di tutup pada tanggal <span class="font-weight-bold primary--text">17 Juni 2022</span>.</span>
                      </div>
                      <div>
                         <v-alert
