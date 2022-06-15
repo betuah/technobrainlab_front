@@ -104,6 +104,9 @@
                             <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.institution}}</span>
                         </td>
                         <td>
+                            <span class="success--text font-weight-medium text-body-2 text-caption text-capitalize">{{item.email}}</span>
+                        </td>
+                        <td>
                             <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.phone_number}}</span>
                         </td>
                         <td>
@@ -221,15 +224,16 @@
             headers: [
                 { text: 'Full Name', value: 'course_title', class: "secondary--text font-weight-bold", sortable: false  },
                 { text: 'Institution', value: 'institution', class: "", sortable: false },
+                { text: 'email', value: 'email', class: "secondary--text font-weight-bold", sortable: false },
                 { text: 'No.Whatsapp', value: 'wa', class: "", sortable: false },
                 { text: 'Gross Amount', value: 'gross_amount', class: "", sortable: false },
                 { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: true },
-                // { text: 'Completion', value: 'completion', class: "secondary--text font-weight-bold", sortable: false },
                 { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
             ],
             exportHeader: {
                 'Full Name': 'participant.fullName',
                 'Institution': 'participant.institution',
+                'Email' : 'participant.email',
                 'No.whatsapp' : 'participant.phone_number',
                 'Gross Amount' : 'order.gross_amount',
                 'Payment Status' : 'order.payment_status'
