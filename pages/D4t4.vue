@@ -231,12 +231,12 @@
                 { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
             ],
             exportHeader: {
-                'Full Name': 'participant.fullName',
-                'Institution': 'participant.institution',
-                'Email' : 'participant.email',
-                'No.whatsapp' : 'participant.phone_number',
-                'Gross Amount' : 'order.gross_amount',
-                'Payment Status' : 'order.payment_status'
+                'Full Name': 'fullName',
+                'Institution': 'institution',
+                'Email' : 'email',
+                'No.whatsapp' : 'phone_number',
+                'Gross Amount' : 'gross_amount',
+                'Payment Status' : 'payment_status'
             },
             courseData: null,
             desserts: [],
