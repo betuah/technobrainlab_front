@@ -110,6 +110,9 @@
                             <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.phone_number}}</span>
                         </td>
                         <td>
+                            <span class="grey--text font-weight-medium text-body-2 text-caption">{{item.profession}}</span>
+                        </td>
+                        <td>
                             <span class="orange--text font-weight-medium text-body-2 text-caption">Rp. {{item.gross_amount}}</span>
                         </td>
                         <td>
@@ -226,6 +229,7 @@
                 { text: 'Institution', value: 'institution', class: "", sortable: false },
                 { text: 'email', value: 'email', class: "secondary--text font-weight-bold", sortable: false },
                 { text: 'No.Whatsapp', value: 'wa', class: "", sortable: false },
+                { text: 'Profession', value: 'profession', class: "", sortable: false },
                 { text: 'Gross Amount', value: 'gross_amount', class: "", sortable: false },
                 { text: 'Payment Stats', value: 'paymentStats', class: "", sortable: true },
                 { text: 'Actions', value: 'actions', class: "secondary--text font-weight-bold", sortable: false }
