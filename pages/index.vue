@@ -486,16 +486,19 @@ export default {
                }
             }
 
-            this.$axios.post('https://api-technobrainlab.herokuapp.com/api/v1/order/create', bodyData)
-               .then(resData => {
-                  this.$router.push('/aws/success')
+            // this.$axios.post('https://api-technobrainlab.herokuapp.com/api/v1/order/create', bodyData)
+            //    .then(resData => {
+            //       this.$router.push('/aws/success')
+            //       this.loading = false
+            //    })
+            //    .catch(e => {
+            //       console.log(e, 'bawah')
+            //       this.showNotif('warning', `${'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
+            //       this.loading = false
+            //    })
+
+            this.showNotif('error', `${'Mohon maaf pendaftaran Telah Di tutup!'}`)
                   this.loading = false
-               })
-               .catch(e => {
-                  console.log(e, 'bawah')
-                  this.showNotif('warning', `${'Mohon maaf gagal mendaftar, mohon coba beberapa saat lagi atau hubungi admin.'}`)
-                  this.loading = false
-               })
          }
       }
    }
