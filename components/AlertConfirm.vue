@@ -5,7 +5,7 @@
             persistent
             width="unset"
         >
-            <v-card>
+            <v-card class="tw-border-none">
                 <v-progress-linear
                     color="error"
                     :value="progress"
@@ -24,11 +24,12 @@
                         Cancel {{ count > 0 ? count : '' }}
                     </v-btn>
                     <v-btn
-                        color="green darken-1"
+                        color="red darken-1"
                         text
                         @click="_confirm()"
+                        class="font-weight-bold"
                     >
-                        Confirm
+                        DELETE
                     </v-btn>
                 </v-card-actions>
             </v-card>
