@@ -52,7 +52,7 @@ export default {
   ],
 
   router: {
-    base: '/aws/'
+    base: '/course/'
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
