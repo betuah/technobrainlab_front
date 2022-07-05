@@ -1,10 +1,9 @@
 <template>
     <v-app 
-        dark
-        class="scrollBarHidden"
+        class="tw-overflow-hidden fill-height"
     >
         <!-- <Header /> -->
-        <v-main>
+        <v-main class="tw-overflow-hidden">
             <nuxt />
         </v-main>
     </v-app>
