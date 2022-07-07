@@ -109,9 +109,9 @@
                      </template>
                      <template v-slot:[`item.certificate_template`]="{ item }">
                         <div class="d-flex flex-column">
-                           <span class="text-caption">Preview Certificate</span>
-                           <v-btn small outlined color="primary lighten-1" class="text-caption white--text rounded-lg font-weight-bold" @click="previewCertificate(item.id)">
-                              <v-icon small class="mr-1">visibility</v-icon>
+                           <span class="text-caption">Certificate Template</span>
+                           <v-btn small outlined color="primary lighten-1" class="text-caption white--text rounded-md font-weight-bold" @click="previewCertificate(item.id)">
+                              <v-icon x-small class="mr-1">visibility</v-icon>
                               show
                            </v-btn>
                         </div>
