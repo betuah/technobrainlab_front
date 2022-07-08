@@ -57,7 +57,7 @@
                             class="grey--text"
                         >
                             <template v-slot:[`item.certificateNumber`]="{ item }">
-                                <span class="grey--text font-weight-bold text-body-2 text-caption text-capitalize">{{item.certificateNumber}} {{item}}</span>
+                                <span class="grey--text font-weight-bold text-body-2 text-caption text-capitalize">{{item.certificateNumber}}</span>
                             </template>
                             <template v-slot:[`item.fullName`]="{ item }">
                                 <span class="success--text font-weight-bold text-body-2 text-caption text-capitalize">{{item.fullName}}</span>
