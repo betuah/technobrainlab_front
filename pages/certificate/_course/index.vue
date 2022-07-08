@@ -57,7 +57,7 @@
                             class="grey--text"
                         >
                             <template v-slot:[`item.certificateNumber`]="{ item }">
-                                <span class="grey--text font-weight-bold text-body-2 text-caption text-capitalize">{{item.certificateNumber}}</span>
+                                <span class="grey--text font-weight-bold text-body-2 text-caption text-capitalize">{{item.certificateNumber}} {{item}}</span>
                             </template>
                             <template v-slot:[`item.fullName`]="{ item }">
                                 <span class="success--text font-weight-bold text-body-2 text-caption text-capitalize">{{item.fullName}}</span>
@@ -67,7 +67,7 @@
                             </template>
                             <template v-slot:[`item.action`]="{ item }">
                                 <div class="d-flex flex-md-row mb-3 ma-md-0 justify-start align-center">
-                                    <v-btn small outlined color="success" class="success--text text-caption mr-md-2 rounded-lg" @click="getCertificate(courseData._id, item.id)">
+                                    <v-btn small outlined color="success" class="success--text text-caption mr-md-2 rounded-lg" @click="getCertificate(courseData._id, item.id, item.certificateId)">
                                         <v-icon x-small class="mr-1">
                                             description
                                         </v-icon>
@@ -158,9 +158,15 @@
                     } return gp2 + lastChar; 
                 });
             },
-            getCertificate(courseId, participantId) {
+            getCertificate(courseId, participantId, certificateId) {
                 this.loading = true
-                return this.$axios.get(`${this.uri}/certificate/print/${courseId}/${participantId}`, { responseType: "blob" })
+                const data = {
+                    courseId,
+                    participantId,
+                    certificateId,
+                }
+
+                return this.$axios.post(`${this.uri}/certificate/print`, data , { responseType: "blob" })
                     .then(res => {
                         const blob = new Blob([res.data], {type: 'application/pdf'})
                         const objectUrl = URL.createObjectURL(blob)
