@@ -63,7 +63,7 @@
                                     <span>:</span>
                                 </div>
                                 <div class="col-8 ma-0 pa-0 text-caption text-md-subtitle-2 pl-2 align-center">
-                                    {{$moment(certifiedData.course_start).format('DD MMMM YYYY')}} - {{$moment(certifiedData.course_end).format('DD MMMM YYYY')}}
+                                    {{$moment(certifiedData.course.course_start).format('DD MMMM YYYY')}} - {{$moment(certifiedData.course.course_end).format('DD MMMM YYYY')}}
                                 </div>
                             </div>
                             <v-divider class="my-3"></v-divider>
