@@ -8,7 +8,7 @@
                             <span class="text-md-h5 subtitle-1 font-weight-bold white--text mr-1">Certificate</span>
                             <span class="text-md-h5 subtitle-1 white--text">Validation</span>
                             <v-spacer></v-spacer>
-                            <v-btn v-if="certifiedData !== null" small color="white" outlined :ripple="false" class="rounded-lg text-caption font-weight-bold" @click="getCertificate(certifiedData.course.id, certifiedData.participant)">
+                            <v-btn v-if="certifiedData !== null" small color="white" outlined :ripple="false" class="rounded-lg text-caption font-weight-bold" @click="getCertificate(certifiedData.course.id, certifiedData.participant, certifiedData.id)">
                                 Download
                             </v-btn>
                         </div>
@@ -128,7 +128,7 @@
                             this.valid = false
                         }
                         this.certifiedData = resData
-                    } 
+                    }
 
                     this.loading = false
                 } catch (e) {
@@ -136,9 +136,16 @@
                     this.loading = false
                 }
             },     
-            getCertificate(courseId, participantId) {
+            getCertificate(courseId, participantId, certificateId) {
                 this.loading = true
-                this.$axios.get(`${this.uri}/certificate/print/${courseId}/${participantId}`, { responseType: "blob" })
+                const data = {
+                    courseId,
+                    participantId,
+                    certificateId,
+                }
+                console.log(data)
+
+                this.$axios.post(`${this.uri}/certificate/print`, data , { responseType: "blob" })
                 .then(res => {
                     const blob = new Blob([res.data], {type: 'application/pdf'})
                     const objectUrl = URL.createObjectURL(blob)

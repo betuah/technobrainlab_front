@@ -166,6 +166,8 @@
                     certificateId,
                 }
 
+                console.log(data)
+
                 return this.$axios.post(`${this.uri}/certificate/print`, data , { responseType: "blob" })
                     .then(res => {
                         const blob = new Blob([res.data], {type: 'application/pdf'})

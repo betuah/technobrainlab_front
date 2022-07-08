@@ -9,6 +9,7 @@
                             <span class="text-md-h5 subtitle-1 white--text">Signature</span>
                         </div>
                         <div class="d-flex flex-column justify-center align-center pa-5">
+                            <span class="text-subtitle-2">Certificate was signin by :</span>
                             <span class="text-h5 font-weight-bold">Fazhar Restu Fauzi</span>
                             <span class="text-subtitle-2">CEO & Founder Technobrainlab</span>
                         </div>
