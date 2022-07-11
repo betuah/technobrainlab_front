@@ -33,11 +33,14 @@
                         <div class="d-flex flex-row mt-2 mt-md-0 flex-md-row mb-3 ma-md-0 justify-space-between justify-start align-center">
                            <v-btn :loading="loading" color="white" icon class="white--text mr-md-2" @click="refreshData()">
                               <v-icon>
-                                    restore
+                                 restore
                               </v-icon>
                            </v-btn>
                            <v-btn small outlined color="white" class="mr-2" @click="gotoCertificateList()">
                               Certificate List
+                           </v-btn>
+                           <v-btn small outlined color="white" class="mr-2" @click="importDialog = true">
+                              Import Participant
                            </v-btn>
                            <v-btn small outlined color="white" class="mr-2">
                               <json-excel
@@ -241,20 +244,28 @@
                </v-card>
          </v-container>
       </div>
+
+      <import-csv :dialog.sync="importDialog" :multiple="false" @filesUploaded="importCsv($event)" />
    </div>
 </template>
 
 <script>
-   import AlertConfirm from '../../../components/AlertConfirm.vue'
+   import AlertConfirm from '../../../components/AlertConfirm.vue';
    import JsonExcel from "vue-json-excel";
+   import ImportCsv from '~/components/ImportCsv.vue';
+   import Papa from 'papaparse';
 
    export default {
-      components: { AlertConfirm, JsonExcel },
+      components: { AlertConfirm, JsonExcel, ImportCsv },
       data: () => ({
+         importDialog: false,
          search: '',
          select: false,
          selectedRows: [],
          loading: false,
+         csvFile: [],
+         csvData: [],
+         parsed: false,
          headers: [
                { text: 'Full Name', value: 'fullName', class: "secondary--text font-weight-bold", sortable: false  },
                { text: 'Institution', value: 'institution', class: "", sortable: false },
@@ -294,6 +305,50 @@
          }
       },
       methods: {
+         async importCsv(files) {
+            this.csvFile = files[0];
+            this.parseFile();
+         },
+         parseFile(){
+            Papa.parse( this.csvFile, {
+               header: false,
+               skipEmptyLines: true,
+               complete: function( results ) {
+                  this.csvData = results.data.map(e => {
+                     return {
+                        "email" : e[1],
+                        "fullName" : e[0],
+                        "phone_number" : e[2],
+                        "profession" : e[3],
+                        "institution" : e[4],
+                        "order_details" : {
+                           "payment_type" : "manual",
+                           "bank" : "bca",
+                           "items" : [this.$route.params.id],
+                           "payment_status": Number(e[5])
+                        }
+                     }
+                  });
+                  this.parsed = true;
+                  this.import()
+               }.bind(this)
+            } );
+         },
+         async import() {
+            try {
+               this.loading = true
+               const bodyData = { 
+                  courseId: this.$route.params.id, 
+                  data: this.csvData,
+               }
+               await this.$axios.post(`${this.uri}/order/create/many`, bodyData)
+               this.$refs.notif.show('success', 'Import Participant success!')
+               this.refreshData()
+            } catch (error) {
+               this.$refs.notif.show('error', 'Failed to Import Participant data!')
+               this.loading = false
+            }
+         },
          async viewPayment(uri) {
                this.$refs.image.show(uri)
          },
