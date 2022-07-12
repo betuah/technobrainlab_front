@@ -47,6 +47,17 @@
                             <v-divider class="my-3"></v-divider>
                             <div class="d-flex flex-row col-12 ma-0 pa-0 align-center">
                                 <div class="d-flex flex-row col-4 ma-0 pa-0 text-caption text-md-subtitle-2 font-weight-bold align-center">
+                                    <span>Institution</span>
+                                    <v-spacer></v-spacer>
+                                    <span>:</span>
+                                </div>
+                                <div class="col-8 ma-0 pa-0 text-caption text-md-subtitle-2 pl-2 align-center">
+                                    {{certifiedData.customer.institution}}
+                                </div>
+                            </div>
+                            <v-divider class="my-3"></v-divider>
+                            <div class="d-flex flex-row col-12 ma-0 pa-0 align-center">
+                                <div class="d-flex flex-row col-4 ma-0 pa-0 text-caption text-md-subtitle-2 font-weight-bold align-center">
                                     <span>Course Title</span>
                                     <v-spacer></v-spacer>
                                     <span>:</span>
