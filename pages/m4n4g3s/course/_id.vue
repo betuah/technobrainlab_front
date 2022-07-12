@@ -366,28 +366,33 @@
                   this.loading = false
                }
          },
-         async deleteParticipant(id) {
-               const confirm = await this.$refs.confirm.show(
-                  'Are you sure to delete this data ?',
-                  'Your data will be permanently deleted!'
-               )
+         async deleteParticipant() {
+            this.loading = true
+            const confirm = await this.$refs.confirm.show(
+               'Are you sure to delete this data ?',
+               'Your data will be permanently deleted!'
+            )
 
-               if (confirm) {
-                  try {
-                     this.loading = true
-                     await this.$axios.delete(`/api/course/enroll/${id}`)
-                     this.$refs.notif.show('success', 'Delete data success!')
-                     this.alertConfirm = false
-                     this.refreshData()
-                  } catch (e) {
-                     this.$refs.notif.show('error', `${e.response.data.code || 'Sorry your data cannot be delete.'}`)
-                     this.alertConfirm = false
-                     this.loading = false
+            if (confirm) {
+               try {
+                  const bodyData = {
+                     "courseId": this.$route.params.id,
+                     "participantId": this.selectedRows.map(i => i.participant_id)
                   }
-               } else {
+                  
+                  await this.$axios.post(`${this.uri}/course/delete/participant`, bodyData)
+                  this.$refs.notif.show('success', 'Delete data success!')
+                  this.alertConfirm = false
+                  this.refreshData()
+               } catch (e) {
+                  this.$refs.notif.show('error', `${e.response.data.code || 'Sorry your data cannot be delete.'}`)
                   this.alertConfirm = false
                   this.loading = false
                }
+            } else {
+               this.alertConfirm = false
+               this.loading = false
+            }
          },
          async resendPayment() {
             const bodyData = {

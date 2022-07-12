@@ -16,6 +16,7 @@
                Drop your file(s) here, or click to select them.
             </p>
          </v-row>
+         <a href="/course/import-example.csv" download>Download Example CSV</a>
          <v-virtual-scroll
             v-if="uploadedFiles.length > 0"
             :items="uploadedFiles"
@@ -76,7 +77,7 @@ export default {
    data() {
       return {
          dragover: false,
-         uploadedFiles: []
+         uploadedFiles: [],
       };
    },
    methods: {
@@ -124,6 +125,9 @@ export default {
          // Close the dialog box
          this.closeDialog();
          }
+      },
+      downloadCsv() {
+         alert(location.hostname)
       }
    }
 };
